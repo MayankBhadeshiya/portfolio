@@ -8,11 +8,31 @@ export type Job = {
   summary?: string;
 };
 
+export type ProjectAccent = "periwinkle" | "apricot" | "mint" | "rose";
+
+export type ProjectLinks = {
+  appStore?: string;
+  playStore?: string;
+  github?: string;
+  live?: string;
+};
+
 export type Project = {
+  // URL segment: /projects/<slug>
+  slug: string;
   name: string;
-  description: string;
+  // One line shown on the home page card.
+  tagline: string;
+  // Overview paragraph on the project's own page.
+  summary: string;
+  role: string;
+  platforms: string[];
   stack: string[];
-  link?: string;
+  // What you built or solved, one point per entry.
+  highlights: string[];
+  // Cover color; one of the accent tokens in constants/colors.ts.
+  accent: ProjectAccent;
+  links?: ProjectLinks;
 };
 
 export type SkillGroup = {
@@ -168,8 +188,84 @@ export const profile = {
     },
   ] as Capability[],
 
-  // Add your projects here. The section stays hidden while this list is empty.
-  // Example:
-  // { name: "App name", description: "What it does and who uses it.", stack: ["React Native", "Firebase"], link: "https://..." },
-  projects: [] as Project[],
+  // Projects for the "Selected work" section and the /projects/<slug> pages.
+  // The section stays hidden while this list is empty.
+  projects: [
+    // TODO: replace with real project details (drafted from résumé skills).
+    {
+      slug: "wearables-app",
+      name: "Health & wearables app",
+      tagline: "Activity and heart-rate data from wearables, in one mobile app.",
+      summary:
+        "A cross-platform app that connects to people's wearables, pulls in their steps, heart rate and activity, and turns it into daily and weekly views they check every morning.",
+      role: "Mobile developer",
+      platforms: ["iOS", "Android"],
+      stack: ["React Native", "Expo", "Terra API", "Firebase", "Push notifications"],
+      highlights: [
+        "Connected wearable providers through the Terra API.",
+        "Built daily and weekly activity views from raw health data.",
+        "Sent reminders and summaries with push notifications.",
+      ],
+      accent: "mint",
+    },
+    // TODO: replace with real project details (drafted from résumé skills).
+    {
+      slug: "voice-app",
+      name: "Real-time voice app",
+      tagline: "Live voice calls inside a React Native app.",
+      summary:
+        "A mobile app with real-time voice at its core: people join calls in a tap, see who's speaking, and get notified when a conversation they care about starts.",
+      role: "Mobile developer",
+      platforms: ["iOS", "Android"],
+      stack: ["React Native", "LiveKit", "Node.js", "Push notifications"],
+      highlights: [
+        "Built live voice rooms on LiveKit.",
+        "Added call controls, speaking indicators and reconnect handling.",
+        "Used push notifications to bring people back into live calls.",
+      ],
+      accent: "rose",
+    },
+    // TODO: replace with real project details (drafted from résumé skills).
+    {
+      slug: "commerce-app",
+      name: "Commerce & payments app",
+      tagline: "Shopping, scanning and checkout with several payment providers.",
+      summary:
+        "A shopping app where people find stores on a map, scan products to look them up, and pay with the method they prefer, from cards and UPI to in-app purchases.",
+      role: "Mobile developer",
+      platforms: ["iOS", "Android"],
+      stack: [
+        "React Native",
+        "Stripe",
+        "Razorpay",
+        "PayPal",
+        "In-app purchases",
+        "Barcode scanning",
+        "Google Maps",
+      ],
+      highlights: [
+        "Integrated Stripe, Razorpay and PayPal checkout.",
+        "Added Apple and Google in-app purchases for subscriptions.",
+        "Built barcode scanning and a map of nearby stores.",
+      ],
+      accent: "apricot",
+    },
+    // TODO: replace with real project details (drafted from résumé skills).
+    {
+      slug: "tv-app",
+      name: "React Native TV app",
+      tagline: "One React Native codebase, running on the big screen.",
+      summary:
+        "A TV app built with React Native TV, designed for remote-control navigation and shipped with the same build and over-the-air update pipeline as the mobile apps.",
+      role: "Mobile developer",
+      platforms: ["Android TV", "Apple TV"],
+      stack: ["React Native TV", "TypeScript", "EAS Build", "EAS Update"],
+      highlights: [
+        "Built focus-based navigation for remote controls.",
+        "Shared code and components with the mobile apps.",
+        "Shipped fixes over the air with EAS Update.",
+      ],
+      accent: "periwinkle",
+    },
+  ] as Project[],
 };

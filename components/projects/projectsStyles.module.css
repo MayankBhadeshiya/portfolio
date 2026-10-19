@@ -1,0 +1,134 @@
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(6rem, 14vw, 11rem) var(--gutter) 0;
+}
+
+.title {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.list {
+  border-top: 1px solid var(--color-line);
+}
+
+.item {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "name tagline"
+    "name meta";
+  gap: 0.6rem clamp(2rem, 5vw, 5rem);
+  align-items: start;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) 0;
+  text-decoration: none;
+  transition: padding-left 0.45s var(--ease-out);
+}
+
+.name {
+  grid-area: name;
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  transition: color 0.3s ease;
+}
+
+.tagline {
+  grid-area: tagline;
+  max-width: 40ch;
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+
+.meta {
+  grid-area: meta;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.meta li {
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.meta .stackItem {
+  border-color: transparent;
+  background: var(--color-white-a08);
+}
+
+.row:hover,
+.row:focus-visible {
+  padding-left: 1.25rem;
+}
+
+.row:hover .name,
+.row:focus-visible .name {
+  color: var(--color-apricot);
+}
+
+.row:hover .tagline,
+.row:focus-visible .tagline {
+  color: var(--color-text);
+}
+
+/* Inline cover for touch and narrow screens; the floating card replaces it on desktop. */
+.inlineCover {
+  display: none;
+}
+
+.section:not(.floating) .inlineCover {
+  display: block;
+  grid-area: cover;
+  max-width: 24rem;
+  margin-bottom: 0.75rem;
+}
+
+.section:not(.floating) .row {
+  grid-template-areas:
+    "cover cover"
+    "name tagline"
+    "name meta";
+}
+
+.float {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: 17rem;
+  pointer-events: none;
+}
+
+@media (max-width: 860px) {
+  .row,
+  .section:not(.floating) .row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "cover"
+      "name"
+      "tagline"
+      "meta";
+  }
+  .section:not(.floating) .inlineCover {
+    max-width: none;
+  }
+  .row:hover,
+  .row:focus-visible {
+    padding-left: 0;
+  }
+}

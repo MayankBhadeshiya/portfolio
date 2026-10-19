@@ -10,6 +10,7 @@ export const strings = {
   },
   nav: {
     work: "Work",
+    projects: "Projects",
     experience: "Experience",
     toolkit: "Toolkit",
     contact: "Contact",
@@ -22,6 +23,24 @@ export const strings = {
   showcase: {
     title: "What I build",
     progressLabel: "Section progress",
+  },
+  projects: {
+    title: "Selected work",
+    view: "View project",
+  },
+  projectDetail: {
+    back: "All work",
+    role: "Role",
+    platforms: "Platforms",
+    stack: "Stack",
+    overview: "Overview",
+    highlights: "What I built",
+    links: "Links",
+    next: "Next project",
+    appStore: "App Store",
+    playStore: "Google Play",
+    github: "GitHub",
+    live: "Live site",
   },
   experience: {
     title: "Where I've worked",

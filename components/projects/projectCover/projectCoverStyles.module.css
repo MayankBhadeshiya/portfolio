@@ -1,0 +1,39 @@
+.cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 1.25rem 1.4rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  color: var(--color-night);
+  background:
+    radial-gradient(circle at 85% 15%, var(--color-white-a60), transparent 45%),
+    linear-gradient(150deg, var(--accent), var(--color-night-raised) 115%);
+  box-shadow: 0 1.5rem 3.5rem var(--color-shadow);
+}
+
+.platforms {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.name {
+  max-width: 12ch;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.hero {
+  aspect-ratio: 16 / 9;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 1.75rem;
+}
+
+.hero .name {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+}
