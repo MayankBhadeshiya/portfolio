@@ -40,7 +40,14 @@ export default function Experience() {
           <h3 className={styles.credTitle}>{s.certifications}</h3>
           <ul className={styles.credList}>
             {profile.certifications.map((c) => (
-              <li key={c}>{c}</li>
+              <li key={c.url}>
+                <a className={styles.credLink} href={c.url} target="_blank" rel="noreferrer">
+                  {c.name}
+                </a>
+                <span className={styles.credMeta}>
+                  {c.issuer} · {s.verify}
+                </span>
+              </li>
             ))}
           </ul>
         </motion.div>

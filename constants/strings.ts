@@ -204,6 +204,7 @@ export const strings = {
     eyebrow: "Experience",
     lines: ["Where I've", "worked."],
     certifications: "Certifications",
+    verify: "Verify ↗",
     education: "Education",
   },
   contact: {

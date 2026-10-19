@@ -12,6 +12,13 @@ export type Job = {
 // mobile = orange, frontend = blue, backend = mint.
 export type DisciplineKey = "mobile" | "frontend" | "backend";
 
+export type Certification = {
+  name: string;
+  issuer: string;
+  // Public verification link.
+  url: string;
+};
+
 export type ProjectLinks = {
   appStore?: string;
   playStore?: string;
@@ -98,9 +105,17 @@ export const profile = {
   },
 
   certifications: [
-    "AWS Certified Solutions Architect – Associate",
-    "Meta Front-End Developer Professional Certificate",
-  ],
+    {
+      name: "AWS Certified Solutions Architect – Associate",
+      issuer: "Amazon Web Services",
+      url: "https://www.credly.com/badges/e706e31c-9306-461a-a893-566d6bd40d8d/public_url",
+    },
+    {
+      name: "Meta Front-End Developer Professional Certificate",
+      issuer: "Meta · Coursera",
+      url: "https://www.coursera.org/account/accomplishments/specialization/MJRAQARZHDGB",
+    },
+  ] as Certification[],
 
   skills: [
     {
