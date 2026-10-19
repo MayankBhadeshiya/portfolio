@@ -17,8 +17,15 @@ export type Project = {
 
 export type SkillGroup = {
   name: string;
-  color: "coral" | "sun" | "mint" | "cobalt" | "lilac";
   skills: string[];
+};
+
+// One chapter in the "What I build" showcase. `screen` picks the phone mockup.
+export type Capability = {
+  screen: "payments" | "voice" | "health" | "ship";
+  label: string;
+  title: string;
+  body: string;
 };
 
 export const profile = {
@@ -69,7 +76,6 @@ export const profile = {
   skills: [
     {
       name: "Mobile",
-      color: "coral",
       skills: [
         "React Native (CLI & Expo)",
         "Expo EAS Build",
@@ -88,7 +94,6 @@ export const profile = {
     },
     {
       name: "Web",
-      color: "sun",
       skills: [
         "TypeScript",
         "JavaScript (ES6+)",
@@ -102,7 +107,6 @@ export const profile = {
     },
     {
       name: "Backend & cloud",
-      color: "mint",
       skills: [
         "Node.js",
         "Express",
@@ -117,12 +121,10 @@ export const profile = {
     },
     {
       name: "Payments",
-      color: "lilac",
       skills: ["Stripe", "Razorpay", "PayPal", "Payflow Pro"],
     },
     {
       name: "How I work",
-      color: "cobalt",
       skills: [
         "Jest",
         "CI/CD",
@@ -137,6 +139,34 @@ export const profile = {
       ],
     },
   ] as SkillGroup[],
+
+  // Chapters for the pinned phone showcase, in scroll order.
+  capabilities: [
+    {
+      screen: "payments",
+      label: "Payments",
+      title: "Checkout that just works",
+      body: "Stripe, Razorpay, PayPal and Payflow Pro on the web, plus Apple and Google in-app purchases on mobile.",
+    },
+    {
+      screen: "voice",
+      label: "Real-time voice",
+      title: "Talk to people, live",
+      body: "Real-time voice features built on LiveKit, with push notifications that bring people back into the conversation.",
+    },
+    {
+      screen: "health",
+      label: "Health & wearables",
+      title: "Data from the wrist",
+      body: "Steps, heart rate and activity pulled from wearables through the Terra API and shown in a way people actually read.",
+    },
+    {
+      screen: "ship",
+      label: "Shipping",
+      title: "From commit to the store",
+      body: "EAS Build and Workflows for CI/CD, EAS Update for over-the-air fixes, and releases to the App Store and Google Play.",
+    },
+  ] as Capability[],
 
   // Add your projects here. The section stays hidden while this list is empty.
   // Example:

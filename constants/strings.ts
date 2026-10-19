@@ -10,46 +10,73 @@ export const strings = {
   },
   nav: {
     work: "Work",
+    experience: "Experience",
     toolkit: "Toolkit",
     contact: "Contact",
   },
   hero: {
     getInTouch: "Get in touch",
     viewGithub: "View GitHub",
+    roleAt: "at",
   },
-  now: {
-    title: "Right now",
+  showcase: {
+    title: "What I build",
+    progressLabel: "Section progress",
   },
-  work: {
+  experience: {
     title: "Where I've worked",
-  },
-  projects: {
-    title: "Things I've built",
+    education: "Education",
   },
   toolkit: {
     title: "What I work with",
+    countSuffix: "tools",
   },
-  creds: {
-    title: "Certified & schooled",
+  credentials: {
+    title: "Certifications",
   },
   contact: {
-    title: "Got an app to build? Let's talk.",
+    title: "Let's build something people use every day.",
     github: "GitHub",
     linkedin: "LinkedIn",
     resume: "Résumé",
     copyright: "©",
   },
-  phoneStack: {
+  phone: {
     time: "9:41",
-    notifShippedTitle: "Order shipped",
-    notifShippedBody: "Arriving tomorrow",
-    notifUpdateTitle: "Update installed",
-    notifUpdateBody: "v2.4 is live",
-    steps: "8,204",
-    stepsLabel: "steps",
-    cardNumber: "•••• 4242",
-    totalLabel: "Total",
-    totalAmount: "₹1,499",
-    payNow: "Pay now",
+    payments: {
+      heading: "Checkout",
+      item: "Annual plan",
+      itemPrice: "₹1,299",
+      tax: "Taxes",
+      taxPrice: "₹200",
+      total: "Total",
+      totalPrice: "₹1,499",
+      cardNumber: "•••• 4242",
+      pay: "Pay now",
+    },
+    voice: {
+      status: "Live",
+      caller: "Support call",
+      timer: "02:14",
+      mute: "Mute",
+      end: "End",
+    },
+    health: {
+      steps: "8,204",
+      stepsLabel: "steps today",
+      heartRate: "72",
+      heartRateLabel: "bpm resting",
+      week: "This week",
+    },
+    ship: {
+      heading: "Releases",
+      updateTitle: "Update ready",
+      updateBody: "v2.4.1 downloaded over the air",
+      builds: [
+        { name: "iOS build 214", status: "Ready" },
+        { name: "Android build 214", status: "Ready" },
+        { name: "OTA update 2.4.1", status: "Live" },
+      ],
+    },
   },
 } as const;

@@ -1,23 +1,28 @@
 // Every color used on the site. CSS reads these as `var(--color-<kebab-name>)`;
 // TS code imports `colors` directly.
 export const colors = {
-  cobalt: "#2f3cff",
-  cobaltDeep: "#1f27c9",
-  coral: "#ff5c7a",
-  sun: "#ffc53d",
-  sunLight: "#ffd469",
-  mint: "#2fd69a",
-  lilac: "#b79cff",
-  ink: "#1b1442",
-  inkA10: "rgb(27 20 66 / 0.1)",
-  inkA15: "rgb(27 20 66 / 0.15)",
-  paper: "#f5f4ff",
+  night: "#0e1626",
+  nightRaised: "#162036",
+  nightDeep: "#090f1b",
+  navBg: "rgb(14 22 38 / 0.72)",
+
+  text: "#e9ecf5",
+  textMuted: "#8d96b0",
+  textDim: "rgb(233 236 245 / 0.16)",
+  line: "rgb(233 236 245 / 0.12)",
+
+  periwinkle: "#8b9cff",
+  periwinkleA20: "rgb(139 156 255 / 0.2)",
+  periwinkleA08: "rgb(139 156 255 / 0.08)",
+  apricot: "#ffb27a",
+  apricotA20: "rgb(255 178 122 / 0.2)",
+  mint: "#7ee0b8",
+  rose: "#ff8fa3",
+
   white: "#ffffff",
-  whiteA16: "rgb(255 255 255 / 0.16)",
+  whiteA08: "rgb(255 255 255 / 0.08)",
   whiteA60: "rgb(255 255 255 / 0.6)",
-  whiteA72: "rgb(255 255 255 / 0.72)",
-  whiteA92: "rgb(255 255 255 / 0.92)",
-  shadow: "rgb(16 10 60 / 0.35)",
+  shadow: "rgb(5 8 15 / 0.6)",
 } as const;
 
 export type ColorToken = keyof typeof colors;

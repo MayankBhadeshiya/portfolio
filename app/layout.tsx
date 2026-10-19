@@ -1,14 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
 import { profile } from "@/data/profile";
 import { colors, colorsToCssVars } from "@/constants/colors";
 import { strings } from "@/constants/strings";
+import SmoothScroll from "@/components/smoothScroll";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
+const serif = Instrument_Serif({
   subsets: ["latin"],
-  axes: ["opsz", "wdth"],
-  variable: "--font-bricolage",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const sans = Geist({
+  subsets: ["latin"],
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -18,16 +27,18 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: colors.cobalt,
+  themeColor: colors.night,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={bricolage.variable}>
+    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: colorsToCssVars() }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }
