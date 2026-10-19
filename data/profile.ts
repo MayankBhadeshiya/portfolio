@@ -28,8 +28,7 @@ export const profile = {
   title: "Software Engineer",
   intro:
     "I build mobile apps with React Native — from the first screen to the release on the App Store and Google Play.",
-  now:
-    "I'm a Software Engineer at Simform. Most of my work is cross-platform mobile: Expo and bare React Native apps, the Node.js and Firebase services behind them, and the payments, push notifications and over-the-air updates that keep them running in production.",
+  now: "I'm a Software Engineer at Simform. Most of my work is cross-platform mobile: Expo and bare React Native apps, the Node.js and Firebase services behind them, and the payments, push notifications and over-the-air updates that keep them running in production.",
 
   links: {
     github: "https://github.com/MayankBhadeshiya",

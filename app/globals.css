@@ -1,14 +1,4 @@
 :root {
-  --cobalt: #2f3cff;
-  --cobalt-deep: #1f27c9;
-  --coral: #ff5c7a;
-  --sun: #ffc53d;
-  --mint: #2fd69a;
-  --lilac: #b79cff;
-  --ink: #1b1442;
-  --paper: #f5f4ff;
-  --white: #ffffff;
-
   --font: var(--font-bricolage), system-ui, sans-serif;
   --gutter: clamp(1rem, 4vw, 3rem);
   --max: 76rem;
@@ -26,8 +16,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font);
   font-size: 1.0625rem;
   line-height: 1.55;
@@ -54,7 +44,7 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--sun);
+  outline: 3px solid var(--color-sun);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -65,8 +55,8 @@ a {
   top: -4rem;
   z-index: 10;
   padding: 0.6rem 1rem;
-  background: var(--sun);
-  color: var(--ink);
+  background: var(--color-sun);
+  color: var(--color-ink);
   font-weight: 700;
   border-radius: 999px;
 }
@@ -77,8 +67,8 @@ a {
 /* ---------- Hero ---------- */
 
 .hero {
-  background: var(--cobalt);
-  color: var(--white);
+  background: var(--color-cobalt);
+  color: var(--color-white);
   padding: 1.25rem var(--gutter) clamp(3rem, 8vw, 6rem);
   overflow: hidden;
 }
@@ -160,17 +150,17 @@ a {
   transform: scale(0.97);
 }
 .btn-sun {
-  background: var(--sun);
-  color: var(--ink);
+  background: var(--color-sun);
+  color: var(--color-ink);
 }
 .btn-sun:hover {
-  background: #ffd469;
+  background: var(--color-sun-light);
 }
 .btn-ghost {
-  border: 2px solid rgb(255 255 255 / 0.6);
+  border: 2px solid var(--color-white-a60);
 }
 .btn-ghost:hover {
-  border-color: var(--white);
+  border-color: var(--color-white);
 }
 
 /* ---------- Phones ---------- */
@@ -187,9 +177,9 @@ a {
   width: clamp(9.5rem, 17vw, 13.5rem);
   aspect-ratio: 9 / 19;
   padding: 0.45rem;
-  background: var(--ink);
+  background: var(--color-ink);
   border-radius: 2rem;
-  box-shadow: 0 1.5rem 3rem rgb(16 10 60 / 0.35);
+  box-shadow: 0 1.5rem 3rem var(--color-shadow);
   transform: var(--to);
   animation: fan 0.9s cubic-bezier(0.2, 0.9, 0.25, 1.15) 0.25s backwards;
 }
@@ -218,20 +208,20 @@ a {
   border-radius: 1.6rem;
   padding: 2.2rem 0.8rem 0.8rem;
   overflow: hidden;
-  color: var(--ink);
+  color: var(--color-ink);
   font-size: 0.72rem;
   line-height: 1.25;
 }
 .screen-coral {
-  background: var(--coral);
+  background: var(--color-coral);
 }
 .screen-sun {
-  background: var(--sun);
+  background: var(--color-sun);
   display: flex;
   flex-direction: column;
 }
 .screen-mint {
-  background: var(--mint);
+  background: var(--color-mint);
 }
 
 .notch {
@@ -240,7 +230,7 @@ a {
   left: 50%;
   width: 34%;
   height: 0.9rem;
-  background: var(--ink);
+  background: var(--color-ink);
   border-radius: 999px;
   transform: translateX(-50%);
 }
@@ -251,7 +241,7 @@ a {
   font-weight: 800;
   font-stretch: 75%;
   margin: 0.4rem 0 1rem;
-  color: var(--white);
+  color: var(--color-white);
 }
 .ui-notif {
   display: flex;
@@ -259,7 +249,7 @@ a {
   align-items: flex-start;
   padding: 0.6rem;
   margin-bottom: 0.45rem;
-  background: rgb(255 255 255 / 0.92);
+  background: var(--color-white-a92);
   border-radius: 0.8rem;
 }
 .ui-notif b,
@@ -286,7 +276,7 @@ a {
   width: 1.3rem;
   height: 1.3rem;
   border-radius: 0.4rem;
-  background: var(--cobalt);
+  background: var(--color-cobalt);
 }
 
 .ui-card {
@@ -295,15 +285,15 @@ a {
   margin-top: 0.4rem;
   padding: 0.7rem;
   border-radius: 0.8rem;
-  background: var(--cobalt);
-  color: var(--white);
+  background: var(--color-cobalt);
+  color: var(--color-white);
 }
 .ui-card-chip {
   display: block;
   width: 1.5rem;
   height: 1.1rem;
   border-radius: 0.25rem;
-  background: var(--sun);
+  background: var(--color-sun);
 }
 .ui-card-num {
   position: absolute;
@@ -325,8 +315,8 @@ a {
   margin-top: 0.6rem;
   padding: 0.65rem;
   border-radius: 999px;
-  background: var(--ink);
-  color: var(--white);
+  background: var(--color-ink);
+  color: var(--color-white);
   text-align: center;
   font-weight: 700;
 }
@@ -348,10 +338,10 @@ a {
   stroke-width: 11;
 }
 .ring-track {
-  stroke: rgb(27 20 66 / 0.15);
+  stroke: var(--color-ink-a15);
 }
 .ring-fill {
-  stroke: var(--ink);
+  stroke: var(--color-ink);
   stroke-linecap: round;
   stroke-dasharray: 251;
   stroke-dashoffset: 70;
@@ -379,7 +369,7 @@ a {
 }
 .ui-bars i {
   flex: 1;
-  background: var(--ink);
+  background: var(--color-ink);
   border-radius: 0.2rem;
 }
 
@@ -398,7 +388,7 @@ main {
   gap: 1.5rem clamp(2rem, 5vw, 4rem);
 }
 .section + .section {
-  border-top: 2px solid rgb(27 20 66 / 0.1);
+  border-top: 2px solid var(--color-ink-a10);
 }
 
 .section h2 {
@@ -417,7 +407,7 @@ main {
 
 /* Timeline: a real sequence, so the line and dates carry meaning. */
 .timeline {
-  border-left: 4px solid var(--cobalt);
+  border-left: 4px solid var(--color-cobalt);
 }
 .timeline li {
   position: relative;
@@ -437,16 +427,16 @@ main {
   width: 1.1rem;
   height: 1.1rem;
   border-radius: 50%;
-  background: var(--paper);
-  border: 4px solid var(--cobalt);
+  background: var(--color-paper);
+  border: 4px solid var(--color-cobalt);
 }
 .timeline li:first-child::before {
-  background: var(--coral);
-  border-color: var(--coral);
+  background: var(--color-coral);
+  border-color: var(--color-coral);
 }
 .timeline-period {
   font-weight: 600;
-  color: var(--cobalt-deep);
+  color: var(--color-cobalt-deep);
   padding-top: 0.15rem;
 }
 .timeline h3 {
@@ -494,20 +484,28 @@ main {
 .skill-group li {
   padding: 0.35rem 0.8rem;
   border-radius: 999px;
-  background: rgb(255 255 255 / 0.72);
+  background: var(--color-white-a72);
   font-size: 0.95rem;
   font-weight: 500;
 }
-.skill-coral { background: var(--coral); }
-.skill-sun { background: var(--sun); }
-.skill-mint { background: var(--mint); }
-.skill-lilac { background: var(--lilac); }
+.skill-coral {
+  background: var(--color-coral);
+}
+.skill-sun {
+  background: var(--color-sun);
+}
+.skill-mint {
+  background: var(--color-mint);
+}
+.skill-lilac {
+  background: var(--color-lilac);
+}
 .skill-cobalt {
-  background: var(--cobalt);
-  color: var(--white);
+  background: var(--color-cobalt);
+  color: var(--color-white);
 }
 .skill-cobalt li {
-  background: rgb(255 255 255 / 0.16);
+  background: var(--color-white-a16);
 }
 
 .projects {
@@ -519,7 +517,7 @@ main {
   font-weight: 700;
 }
 .project h3 a {
-  text-decoration-color: var(--coral);
+  text-decoration-color: var(--color-coral);
   text-decoration-thickness: 3px;
   text-underline-offset: 4px;
 }
@@ -549,15 +547,15 @@ main {
   width: 0.7rem;
   height: 0.7rem;
   border-radius: 0.2rem;
-  background: var(--mint);
+  background: var(--color-mint);
   transform: rotate(45deg);
 }
 
 /* ---------- Contact ---------- */
 
 .contact {
-  background: var(--coral);
-  color: var(--ink);
+  background: var(--color-coral);
+  color: var(--color-ink);
   padding: clamp(4rem, 10vw, 8rem) var(--gutter) 2rem;
 }
 .contact > * {
@@ -587,7 +585,7 @@ main {
   text-underline-offset: 6px;
 }
 .contact-links a:hover {
-  color: var(--white);
+  color: var(--color-white);
 }
 .contact-foot {
   margin-top: clamp(4rem, 10vw, 7rem);

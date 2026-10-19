@@ -1,30 +1,37 @@
 import { profile } from "@/data/profile";
+import { strings } from "@/constants/strings";
 import PhoneStack from "@/components/PhoneStack";
 
 export default function Home() {
   const { links } = profile;
   const contactLinks = [
     links.email && { label: links.email, href: `mailto:${links.email}` },
-    links.linkedin && { label: "LinkedIn", href: links.linkedin },
-    { label: "GitHub", href: links.github },
-    links.resume && { label: "Résumé", href: links.resume },
+    links.linkedin && { label: strings.contact.linkedin, href: links.linkedin },
+    { label: strings.contact.github, href: links.github },
+    links.resume && { label: strings.contact.resume, href: links.resume },
   ].filter(Boolean) as { label: string; href: string }[];
 
   return (
     <>
       <a className="skip" href="#main">
-        Skip to content
+        {strings.a11y.skipToContent}
       </a>
 
       <header className="hero">
-        <nav className="nav" aria-label="Main">
+        <nav className="nav" aria-label={strings.a11y.mainNav}>
           <a className="nav-name" href="#">
             {profile.name}
           </a>
           <ul>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#toolkit">Toolkit</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li>
+              <a href="#work">{strings.nav.work}</a>
+            </li>
+            <li>
+              <a href="#toolkit">{strings.nav.toolkit}</a>
+            </li>
+            <li>
+              <a href="#contact">{strings.nav.contact}</a>
+            </li>
           </ul>
         </nav>
 
@@ -36,9 +43,11 @@ export default function Home() {
             </h1>
             <p className="hero-intro">{profile.intro}</p>
             <div className="hero-actions">
-              <a className="btn btn-sun" href="#contact">Get in touch</a>
+              <a className="btn btn-sun" href="#contact">
+                {strings.hero.getInTouch}
+              </a>
               <a className="btn btn-ghost" href={links.github} target="_blank" rel="noreferrer">
-                View GitHub
+                {strings.hero.viewGithub}
               </a>
             </div>
           </div>
@@ -48,12 +57,12 @@ export default function Home() {
 
       <main id="main">
         <section className="section now" aria-labelledby="now-title">
-          <h2 id="now-title">Right now</h2>
+          <h2 id="now-title">{strings.now.title}</h2>
           <p className="now-text">{profile.now}</p>
         </section>
 
         <section id="work" className="section" aria-labelledby="work-title">
-          <h2 id="work-title">Where I&apos;ve worked</h2>
+          <h2 id="work-title">{strings.work.title}</h2>
           <ol className="timeline">
             {profile.experience.map((job) => (
               <li key={job.company}>
@@ -70,13 +79,15 @@ export default function Home() {
 
         {profile.projects.length > 0 && (
           <section id="projects" className="section" aria-labelledby="projects-title">
-            <h2 id="projects-title">Things I&apos;ve built</h2>
+            <h2 id="projects-title">{strings.projects.title}</h2>
             <ul className="projects">
               {profile.projects.map((p) => (
                 <li key={p.name} className="project">
                   <h3>
                     {p.link ? (
-                      <a href={p.link} target="_blank" rel="noreferrer">{p.name}</a>
+                      <a href={p.link} target="_blank" rel="noreferrer">
+                        {p.name}
+                      </a>
                     ) : (
                       p.name
                     )}
@@ -90,7 +101,7 @@ export default function Home() {
         )}
 
         <section id="toolkit" className="section" aria-labelledby="toolkit-title">
-          <h2 id="toolkit-title">What I work with</h2>
+          <h2 id="toolkit-title">{strings.toolkit.title}</h2>
           <div className="toolkit">
             {profile.skills.map((group) => (
               <div key={group.name} className={`skill-group skill-${group.color}`}>
@@ -106,7 +117,7 @@ export default function Home() {
         </section>
 
         <section className="section creds" aria-labelledby="creds-title">
-          <h2 id="creds-title">Certified &amp; schooled</h2>
+          <h2 id="creds-title">{strings.creds.title}</h2>
           <ul className="creds-list">
             {profile.certifications.map((c) => (
               <li key={c}>{c}</li>
@@ -119,17 +130,23 @@ export default function Home() {
       </main>
 
       <footer id="contact" className="contact">
-        <h2 className="contact-title">Got an app to build? Let&apos;s talk.</h2>
+        <h2 className="contact-title">{strings.contact.title}</h2>
         <ul className="contact-links">
           {contactLinks.map((l) => (
             <li key={l.href}>
-              <a href={l.href} target={l.href.startsWith("mailto:") ? undefined : "_blank"} rel="noreferrer">
+              <a
+                href={l.href}
+                target={l.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel="noreferrer"
+              >
                 {l.label}
               </a>
             </li>
           ))}
         </ul>
-        <p className="contact-foot">© {new Date().getFullYear()} {profile.name}</p>
+        <p className="contact-foot">
+          {strings.contact.copyright} {new Date().getFullYear()} {profile.name}
+        </p>
       </footer>
     </>
   );

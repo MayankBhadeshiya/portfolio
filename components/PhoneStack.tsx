@@ -1,3 +1,8 @@
+import { strings } from "@/constants/strings";
+
+const s = strings.phoneStack;
+const barHeights = [40, 65, 50, 85, 70, 95, 60];
+
 // Three phone mockups that fan out on load, each sketching a kind of
 // feature from the résumé: push notifications, payments, wearable data.
 export default function PhoneStack() {
@@ -6,19 +11,19 @@ export default function PhoneStack() {
       <div className="phone phone-left">
         <div className="screen screen-coral">
           <div className="notch" />
-          <div className="ui-time">9:41</div>
+          <div className="ui-time">{s.time}</div>
           <div className="ui-notif">
             <div className="ui-dot" />
             <div>
-              <b>Order shipped</b>
-              <span>Arriving tomorrow</span>
+              <b>{s.notifShippedTitle}</b>
+              <span>{s.notifShippedBody}</span>
             </div>
           </div>
           <div className="ui-notif ui-notif-faded">
             <div className="ui-dot" />
             <div>
-              <b>Update installed</b>
-              <span>v2.4 is live</span>
+              <b>{s.notifUpdateTitle}</b>
+              <span>{s.notifUpdateBody}</span>
             </div>
           </div>
         </div>
@@ -32,11 +37,11 @@ export default function PhoneStack() {
               <circle cx="50" cy="50" r="40" className="ring-track" />
               <circle cx="50" cy="50" r="40" className="ring-fill" />
             </svg>
-            <span>8,204</span>
-            <small>steps</small>
+            <span>{s.steps}</span>
+            <small>{s.stepsLabel}</small>
           </div>
           <div className="ui-bars">
-            {[40, 65, 50, 85, 70, 95, 60].map((h, i) => (
+            {barHeights.map((h, i) => (
               <i key={i} style={{ height: `${h}%` }} />
             ))}
           </div>
@@ -48,13 +53,13 @@ export default function PhoneStack() {
           <div className="notch" />
           <div className="ui-card">
             <span className="ui-card-chip" />
-            <span className="ui-card-num">•••• 4242</span>
+            <span className="ui-card-num">{s.cardNumber}</span>
           </div>
           <div className="ui-total">
-            <span>Total</span>
-            <b>₹1,499</b>
+            <span>{s.totalLabel}</span>
+            <b>{s.totalAmount}</b>
           </div>
-          <div className="ui-pay">Pay now</div>
+          <div className="ui-pay">{s.payNow}</div>
         </div>
       </div>
     </div>
