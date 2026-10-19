@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import type { LenisOptions } from "lenis";
 
 const options: LenisOptions = {
@@ -10,6 +10,6 @@ const options: LenisOptions = {
 
 // Smooth scrolling is skipped entirely for people who ask for reduced motion.
 export function useSmoothScroll() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   return { enabled: !reduceMotion, options };
 }

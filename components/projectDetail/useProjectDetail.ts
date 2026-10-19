@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import type { Project } from "@/data/profile";
 import { strings } from "@/constants/strings";
 import type { DetailLink, MetaRow } from "./projectDetailTypes";
@@ -9,7 +9,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const s = strings.projectDetail;
 
 export function useProjectDetail(project: Project) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
 
   const nameReveal = reduceMotion
     ? {}

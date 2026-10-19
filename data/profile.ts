@@ -69,8 +69,8 @@ export const profile = {
   links: {
     github: "https://github.com/MayankBhadeshiya",
     // Add these to show them in the contact section.
-    email: "",
-    linkedin: "",
+    email: "mayankbhadeshiya2@gmail.com",
+    linkedin: "https://www.linkedin.com/in/mayank-bhadeshiya/",
     resume: "",
   },
 

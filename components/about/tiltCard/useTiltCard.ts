@@ -1,13 +1,8 @@
 "use client";
 
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { useRef, type PointerEvent } from "react";
-import {
-  useMotionTemplate,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { useMotionTemplate, useMotionValue, useSpring, useTransform } from "motion/react";
 import { profile } from "@/data/profile";
 
 const MAX_TILT = 14;
@@ -15,7 +10,7 @@ const spring = { damping: 18, stiffness: 220 };
 
 export function useTiltCard() {
   const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
 
   // Pointer position across the card, from -0.5 to 0.5 on each axis.
   const px = useMotionValue(0);

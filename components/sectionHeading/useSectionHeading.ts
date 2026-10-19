@@ -1,11 +1,11 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function useSectionHeading() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
 
   const rise = (index: number) =>
     reduceMotion

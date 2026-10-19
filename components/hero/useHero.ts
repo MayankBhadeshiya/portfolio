@@ -1,13 +1,8 @@
 "use client";
 
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { useRef, useState } from "react";
-import {
-  useMotionValue,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import { useMotionValue, useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import type { BuildPhases } from "./buildScene/buildSceneTypes";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -22,7 +17,7 @@ const stepAt = (p: number) => (p < CODE[0] ? 0 : p < DATA[0] ? 1 : p < SHIP[0] ?
 
 export function useHero() {
   const ref = useRef<HTMLElement>(null);
-  const reduceMotion = useReducedMotion() ?? false;
+  const reduceMotion = usePrefersReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const [step, setStep] = useState(0);
 

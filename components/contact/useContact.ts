@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { profile } from "@/data/profile";
 import { strings } from "@/constants/strings";
 import type { ContactLink } from "./contactTypes";
@@ -11,7 +11,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const displayUrl = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 
 export function useContact() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   const { email, linkedin, github, resume } = profile.links;
   const s = strings.contact;
 

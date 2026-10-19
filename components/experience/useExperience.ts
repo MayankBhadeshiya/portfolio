@@ -1,14 +1,15 @@
 "use client";
 
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { useRef } from "react";
-import { useReducedMotion, useScroll, useSpring } from "motion/react";
+import { useScroll, useSpring } from "motion/react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 // The timeline's line draws itself as the list scrolls through the viewport.
 export function useExperience() {
   const listRef = useRef<HTMLOListElement>(null);
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   const { scrollYProgress } = useScroll({ target: listRef, offset: ["start 0.75", "end 0.55"] });
   const smooth = useSpring(scrollYProgress, { stiffness: 140, damping: 30 });
   const lineScale = reduceMotion ? 1 : smooth;

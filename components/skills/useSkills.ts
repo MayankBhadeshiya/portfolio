@@ -1,7 +1,7 @@
 "use client";
 
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import type { CSSProperties } from "react";
-import { useReducedMotion } from "motion/react";
 import { profile } from "@/data/profile";
 import type { BentoGroup } from "./skillsTypes";
 
@@ -11,7 +11,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const SPANS = [7, 5, 4, 3, 5];
 
 export function useSkills() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
 
   const groups: BentoGroup[] = profile.skills.map((group, i) => ({
     ...group,

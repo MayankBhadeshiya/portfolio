@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { profile } from "@/data/profile";
 import { strings } from "@/constants/strings";
 import type { AboutStat } from "./aboutTypes";
@@ -8,7 +8,7 @@ import type { AboutStat } from "./aboutTypes";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function useAbout() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
 
   const stats: AboutStat[] = [
     { label: strings.about.statSince, value: String(profile.startedYear) },

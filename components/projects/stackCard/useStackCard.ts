@@ -1,12 +1,13 @@
 "use client";
 
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import type { CSSProperties } from "react";
-import { useReducedMotion, useTransform } from "motion/react";
+import { useTransform } from "motion/react";
 import { strings } from "@/constants/strings";
 import type { StackCardMetric, UseStackCardArgs } from "./stackCardTypes";
 
 export function useStackCard({ project, index, progress, range, targetScale }: UseStackCardArgs) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   const scale = useTransform(progress, range, [1, reduceMotion ? 1 : targetScale]);
 
   // Each card sticks a little lower than the one before, so the edges of the
