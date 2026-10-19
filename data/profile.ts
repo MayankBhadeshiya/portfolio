@@ -8,7 +8,9 @@ export type Job = {
   summary?: string;
 };
 
-export type ProjectAccent = "periwinkle" | "apricot" | "mint" | "rose";
+// The three areas of work. Each has its own accent color across the site:
+// mobile = orange, frontend = blue, backend = mint.
+export type DisciplineKey = "mobile" | "frontend" | "backend";
 
 export type ProjectLinks = {
   appStore?: string;
@@ -21,6 +23,10 @@ export type Project = {
   // URL segment: /projects/<slug>
   slug: string;
   name: string;
+  // Short kind-of-project label, e.g. "Mobile / Health tech".
+  category: string;
+  // Main area of work; picks the card's accent color.
+  discipline: DisciplineKey;
   // One line shown on the home page card.
   tagline: string;
   // Overview paragraph on the project's own page.
@@ -30,22 +36,22 @@ export type Project = {
   stack: string[];
   // What you built or solved, one point per entry.
   highlights: string[];
-  // Cover color; one of the accent tokens in constants/colors.ts.
-  accent: ProjectAccent;
   links?: ProjectLinks;
 };
 
 export type SkillGroup = {
   name: string;
+  // Groups without a discipline use the ink accent.
+  discipline?: DisciplineKey;
   skills: string[];
 };
 
-// One chapter in the "What I build" showcase. `screen` picks the phone mockup.
-export type Capability = {
-  screen: "payments" | "voice" | "health" | "ship";
-  label: string;
-  title: string;
+// One of the areas of work listed in the About section.
+export type Discipline = {
+  key: DisciplineKey;
+  name: string;
   body: string;
+  tools: string[];
 };
 
 export const profile = {
@@ -54,8 +60,11 @@ export const profile = {
   lastName: "Bhadeshiya",
   title: "Software Engineer",
   intro:
-    "I build mobile apps with React Native — from the first screen to the release on the App Store and Google Play.",
-  now: "I'm a Software Engineer at Simform. Most of my work is cross-platform mobile: Expo and bare React Native apps, the Node.js and Firebase services behind them, and the payments, push notifications and over-the-air updates that keep them running in production.",
+    "I build mobile apps, web frontends and the APIs behind them, with React Native, React and Next.js, and Node.js.",
+  now: "I'm a Software Engineer at Simform. I work across the stack a product needs: cross-platform mobile apps in React Native and Expo, web frontends in React and Next.js, and the Node.js, Firebase and AWS services behind them — through to payments, push notifications and store releases.",
+  quote: "Good software feels obvious to the person using it. Getting it there is the work.",
+  // First year of professional work, used for the "since" stat.
+  startedYear: 2022,
 
   links: {
     github: "https://github.com/MayankBhadeshiya",
@@ -96,6 +105,7 @@ export const profile = {
   skills: [
     {
       name: "Mobile",
+      discipline: "mobile",
       skills: [
         "React Native (CLI & Expo)",
         "Expo EAS Build",
@@ -114,6 +124,7 @@ export const profile = {
     },
     {
       name: "Web",
+      discipline: "frontend",
       skills: [
         "TypeScript",
         "JavaScript (ES6+)",
@@ -127,6 +138,7 @@ export const profile = {
     },
     {
       name: "Backend & cloud",
+      discipline: "backend",
       skills: [
         "Node.js",
         "Express",
@@ -160,33 +172,27 @@ export const profile = {
     },
   ] as SkillGroup[],
 
-  // Chapters for the pinned phone showcase, in scroll order.
-  capabilities: [
+  // Areas of work shown in the About section.
+  disciplines: [
     {
-      screen: "payments",
-      label: "Payments",
-      title: "Checkout that just works",
-      body: "Stripe, Razorpay, PayPal and Payflow Pro on the web, plus Apple and Google in-app purchases on mobile.",
+      key: "mobile",
+      name: "Mobile apps",
+      body: "Cross-platform iOS and Android apps, from first screen to store release and over-the-air updates.",
+      tools: ["React Native", "Expo", "EAS", "Push", "In-app purchases"],
     },
     {
-      screen: "voice",
-      label: "Real-time voice",
-      title: "Talk to people, live",
-      body: "Real-time voice features built on LiveKit, with push notifications that bring people back into the conversation.",
+      key: "frontend",
+      name: "Web frontends",
+      body: "Fast, accessible interfaces and dashboards with clean state management.",
+      tools: ["React", "Next.js", "TypeScript", "Redux Toolkit", "Tailwind"],
     },
     {
-      screen: "health",
-      label: "Health & wearables",
-      title: "Data from the wrist",
-      body: "Steps, heart rate and activity pulled from wearables through the Terra API and shown in a way people actually read.",
+      key: "backend",
+      name: "Backend & APIs",
+      body: "The services behind the apps: REST APIs, databases, payments and cloud functions.",
+      tools: ["Node.js", "Express", "PostgreSQL", "Firebase", "AWS"],
     },
-    {
-      screen: "ship",
-      label: "Shipping",
-      title: "From commit to the store",
-      body: "EAS Build and Workflows for CI/CD, EAS Update for over-the-air fixes, and releases to the App Store and Google Play.",
-    },
-  ] as Capability[],
+  ] as Discipline[],
 
   // Projects for the "Selected work" section and the /projects/<slug> pages.
   // The section stays hidden while this list is empty.
@@ -195,6 +201,8 @@ export const profile = {
     {
       slug: "wearables-app",
       name: "Health & wearables app",
+      category: "Mobile / Health tech",
+      discipline: "mobile",
       tagline: "Activity and heart-rate data from wearables, in one mobile app.",
       summary:
         "A cross-platform app that connects to people's wearables, pulls in their steps, heart rate and activity, and turns it into daily and weekly views they check every morning.",
@@ -206,12 +214,13 @@ export const profile = {
         "Built daily and weekly activity views from raw health data.",
         "Sent reminders and summaries with push notifications.",
       ],
-      accent: "mint",
     },
     // TODO: replace with real project details (drafted from résumé skills).
     {
       slug: "voice-app",
       name: "Real-time voice app",
+      category: "Mobile / Real-time",
+      discipline: "mobile",
       tagline: "Live voice calls inside a React Native app.",
       summary:
         "A mobile app with real-time voice at its core: people join calls in a tap, see who's speaking, and get notified when a conversation they care about starts.",
@@ -223,12 +232,13 @@ export const profile = {
         "Added call controls, speaking indicators and reconnect handling.",
         "Used push notifications to bring people back into live calls.",
       ],
-      accent: "rose",
     },
     // TODO: replace with real project details (drafted from résumé skills).
     {
       slug: "commerce-app",
       name: "Commerce & payments app",
+      category: "Mobile / Fintech",
+      discipline: "backend",
       tagline: "Shopping, scanning and checkout with several payment providers.",
       summary:
         "A shopping app where people find stores on a map, scan products to look them up, and pay with the method they prefer, from cards and UPI to in-app purchases.",
@@ -248,12 +258,13 @@ export const profile = {
         "Added Apple and Google in-app purchases for subscriptions.",
         "Built barcode scanning and a map of nearby stores.",
       ],
-      accent: "apricot",
     },
     // TODO: replace with real project details (drafted from résumé skills).
     {
       slug: "tv-app",
       name: "React Native TV app",
+      category: "TV / Cross-platform",
+      discipline: "frontend",
       tagline: "One React Native codebase, running on the big screen.",
       summary:
         "A TV app built with React Native TV, designed for remote-control navigation and shipped with the same build and over-the-air update pipeline as the mobile apps.",
@@ -265,7 +276,6 @@ export const profile = {
         "Shared code and components with the mobile apps.",
         "Shipped fixes over the air with EAS Update.",
       ],
-      accent: "periwinkle",
     },
   ] as Project[],
 };

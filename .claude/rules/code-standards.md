@@ -26,6 +26,7 @@ These apply to every file in the repo.
 - In CSS, use the generated custom properties: `var(--color-<token>)`.
 - In TS/Motion code, import `colors` directly.
 - Need a new shade or a transparent variant? Add a token to `colors.ts`; don't inline it.
+- One exception: official tool logos keep their brand color, which comes from Simple Icons data (`icon.hex`). Only `components/toolLogo/` turns that into a fill; register new logos in `constants/tools.ts`, never paste a brand hex anywhere.
 
 ## Formatting
 

@@ -1,0 +1,107 @@
+// Official tool logos (from Simple Icons, CC0) keyed by the exact tool names
+// used in data/profile.ts and the UI. A name with no entry renders as a
+// lettered badge instead (e.g. AWS, which Simple Icons doesn't carry).
+import {
+  siAppstore,
+  siClaude,
+  siCursor,
+  siDocker,
+  siExpo,
+  siExpress,
+  siFigma,
+  siFirebase,
+  siGit,
+  siGithub,
+  siGithubactions,
+  siGithubcopilot,
+  siGooglemaps,
+  siGoogleplay,
+  siJavascript,
+  siJest,
+  siLivekit,
+  siMongodb,
+  siNextdotjs,
+  siNodedotjs,
+  siPaypal,
+  siPostgresql,
+  siPrisma,
+  siRazorpay,
+  siReact,
+  siReactquery,
+  siRedux,
+  siStripe,
+  siTailwindcss,
+  siTypescript,
+  siVercel,
+  type SimpleIcon,
+} from "simple-icons";
+
+export const toolIcons: Record<string, SimpleIcon> = {
+  // Mobile
+  "React Native": siReact,
+  "React Native (CLI & Expo)": siReact,
+  "React Native TV": siReact,
+  Expo: siExpo,
+  EAS: siExpo,
+  "EAS Build": siExpo,
+  "EAS Update": siExpo,
+  "Expo EAS Build": siExpo,
+  "EAS Update (OTA)": siExpo,
+  "EAS Workflows": siExpo,
+  "Expo config plugins": siExpo,
+  "App Store & Google Play releases": siAppstore,
+  "App Store": siAppstore,
+  "Google Play": siGoogleplay,
+  "Google Maps": siGooglemaps,
+  LiveKit: siLivekit,
+  "LiveKit (real-time voice)": siLivekit,
+
+  // Web
+  React: siReact,
+  "Next.js": siNextdotjs,
+  TypeScript: siTypescript,
+  "JavaScript (ES6+)": siJavascript,
+  "Redux Toolkit": siRedux,
+  "React Query": siReactquery,
+  "Tailwind CSS": siTailwindcss,
+  Tailwind: siTailwindcss,
+  Vercel: siVercel,
+  Figma: siFigma,
+
+  // Backend & cloud
+  "Node.js": siNodedotjs,
+  Express: siExpress,
+  PostgreSQL: siPostgresql,
+  MongoDB: siMongodb,
+  Prisma: siPrisma,
+  Firebase: siFirebase,
+  "Firebase & Cloud Functions": siFirebase,
+  Docker: siDocker,
+
+  // Payments
+  Stripe: siStripe,
+  Razorpay: siRazorpay,
+  PayPal: siPaypal,
+  "Payflow Pro": siPaypal,
+
+  // How I work
+  Jest: siJest,
+  "CI/CD": siGithubactions,
+  Git: siGit,
+  "Code review": siGithub,
+  "Claude Code": siClaude,
+  Cursor: siCursor,
+  "GitHub Copilot": siGithubcopilot,
+};
+
+// Real tools that Simple Icons doesn't carry: shown as a lettered badge.
+// Anything in neither list (concepts like "Mentoring") shows no mark.
+export const toolBadges: Record<string, string> = {
+  AWS: "AWS",
+  "AWS (EC2, S3, Lambda, CloudFront)": "AWS",
+  Zustand: "Z",
+  "Terra API": "T",
+  "Terra API (wearables)": "T",
+};
+
+export type ToolIcon = SimpleIcon;

@@ -1,11 +1,10 @@
 import { strings } from "@/constants/strings";
 import Nav from "@/components/nav";
 import Hero from "@/components/hero";
-import Statement from "@/components/statement";
-import Showcase from "@/components/showcase";
+import About from "@/components/about";
 import Projects from "@/components/projects";
+import Skills from "@/components/skills";
 import Experience from "@/components/experience";
-import Toolkit from "@/components/toolkit";
 import Contact from "@/components/contact";
 
 export default function Home() {
@@ -17,11 +16,10 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
-        <Statement />
-        <Showcase />
+        <About />
         <Projects />
+        <Skills />
         <Experience />
-        <Toolkit />
       </main>
       <Contact />
     </>

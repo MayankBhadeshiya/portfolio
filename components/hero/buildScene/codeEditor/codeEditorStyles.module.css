@@ -1,0 +1,146 @@
+.editor {
+  --n: 12;
+  position: absolute;
+  top: 4%;
+  left: 0;
+  z-index: 1;
+  width: 58%;
+  height: 52%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  background: var(--color-editor);
+  color: var(--color-editor-text);
+  box-shadow: 0 30px 70px var(--color-shadow-strong);
+  overflow: hidden;
+  font-family: var(--font-mono), monospace;
+}
+
+.tabs {
+  display: flex;
+  background: var(--color-editor-raised);
+  border-bottom: 1px solid var(--color-editor-line);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.66rem;
+  color: var(--color-editor-muted);
+  border-right: 1px solid var(--color-editor-line);
+}
+
+.tabActive {
+  background: var(--color-editor);
+  color: var(--color-editor-text);
+  box-shadow: inset 0 2px 0 var(--color-react-cyan);
+}
+
+.body {
+  flex: 1;
+  padding: 0.6rem 0;
+  overflow: hidden;
+}
+
+.row {
+  --i: 0;
+  /* 0 → 1 as this line types itself in. */
+  --typed: clamp(0, calc(var(--code) * var(--n) - var(--i)), 1);
+  display: flex;
+  font-size: clamp(0.56rem, 0.85vw, 0.72rem);
+  line-height: 1.75;
+  white-space: pre;
+}
+
+.gutter {
+  flex: none;
+  width: 2.2rem;
+  padding-right: 0.8rem;
+  text-align: right;
+  color: var(--color-editor-muted);
+  opacity: 0.6;
+}
+
+.code {
+  position: relative;
+  display: inline-block;
+}
+
+.text {
+  display: inline-block;
+  clip-path: inset(0 calc((1 - var(--typed)) * 100%) 0 0);
+}
+
+/* Blinking caret, shown only on the line currently being typed. */
+.caret {
+  position: absolute;
+  top: 0.2em;
+  bottom: 0.2em;
+  left: calc(var(--typed) * 100%);
+  width: 2px;
+  background: var(--color-react-cyan);
+  opacity: calc(
+    clamp(0, (var(--code) * var(--n) - var(--i)) * 30, 1) *
+      clamp(0, (var(--i) + 1 - var(--code) * var(--n)) * 30, 1)
+  );
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    visibility: hidden;
+  }
+}
+
+.keyword {
+  color: var(--color-syn-keyword);
+}
+
+.tag {
+  color: var(--color-syn-tag);
+}
+
+.attr {
+  color: var(--color-syn-attr);
+}
+
+.string {
+  color: var(--color-syn-string);
+}
+
+.func {
+  color: var(--color-syn-func);
+}
+
+.plain {
+  color: var(--color-editor-text);
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0.8rem;
+  background: var(--color-frontend);
+  color: var(--color-white);
+  font-size: 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .editor {
+    top: 0;
+    width: 74%;
+    height: 54%;
+  }
+  .tab:not(.tabActive) {
+    display: none;
+  }
+  .gutter {
+    width: 1.6rem;
+    padding-right: 0.5rem;
+  }
+  .row {
+    font-size: 0.5rem;
+  }
+}

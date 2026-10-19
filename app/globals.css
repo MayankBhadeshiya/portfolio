@@ -1,9 +1,29 @@
-/* Resets and base styles only. Component styles live in each component's CSS module. */
+/* Resets, base styles and a few shared utilities.
+   Component styles live in each component's CSS module. */
 
 :root {
-  --gutter: clamp(1.25rem, 5vw, 4rem);
-  --max: 82rem;
+  --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  --max: 80rem;
+  --radius: 14px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Discipline accents: set --accent on any element with one of these classes. */
+.accent-mobile {
+  --accent: var(--color-mobile);
+  --accent-soft: var(--color-mobile-a12);
+}
+.accent-frontend {
+  --accent: var(--color-frontend);
+  --accent-soft: var(--color-frontend-a12);
+}
+.accent-backend {
+  --accent: var(--color-backend);
+  --accent-soft: var(--color-backend-a12);
+}
+.accent-ink {
+  --accent: var(--color-ink);
+  --accent-soft: var(--color-ink-a06);
 }
 
 *,
@@ -13,18 +33,32 @@
 }
 
 html {
-  background: var(--color-night);
+  background: var(--color-paper);
+  /* clip, not hidden: hidden would create a scroll container and break sticky. */
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
-  background: var(--color-night);
-  color: var(--color-text);
+  /* Blueprint grid across the whole page. */
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+  color: var(--color-ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 1.0625rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button {
+  cursor: none;
 }
 
 h1,
@@ -33,6 +67,8 @@ h3,
 p,
 ul,
 ol,
+dl,
+dd,
 figure {
   margin: 0;
 }
@@ -48,14 +84,76 @@ a {
 }
 
 ::selection {
-  background: var(--color-periwinkle);
-  color: var(--color-night);
+  background: var(--color-frontend);
+  color: var(--color-surface);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-apricot);
-  outline-offset: 4px;
+  outline: 2px solid var(--color-frontend);
+  outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* Sections after the hero sit above anything the hero lets spill out. */
+#main > section:not(#top),
+#contact {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Shared utilities ---------- */
+
+/* Tight, heavy display type, in the style of the Next.js and Vercel sites. */
+.display {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+/* Small label above a heading, written like a code comment. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-ink-soft);
+}
+
+.eyebrow::before {
+  content: "//";
+  color: var(--accent, var(--color-frontend));
+}
+
+.chip {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--accent-soft, var(--color-ink-a06));
+  color: var(--color-ink);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+/* White card with a hairline border and an accent bar on its left edge. */
+.card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--accent, var(--color-ink));
 }
 
 .skip-link {
@@ -64,12 +162,12 @@ a {
   top: -4rem;
   z-index: 100;
   padding: 0.6rem 1rem;
-  background: var(--color-apricot);
-  color: var(--color-night);
-  font-weight: 600;
   border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-surface);
   text-decoration: none;
 }
+
 .skip-link:focus {
   top: 1rem;
 }

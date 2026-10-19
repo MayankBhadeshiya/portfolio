@@ -32,7 +32,6 @@ export function useProjectDetail(project: Project) {
   const metaRows: MetaRow[] = [
     { label: s.role, value: project.role },
     { label: s.platforms, value: project.platforms.join(", ") },
-    { label: s.stack, value: project.stack.join(", ") },
   ];
 
   // Only links that have been filled in appear.

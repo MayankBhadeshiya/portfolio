@@ -1,0 +1,17 @@
+.wrap {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+}
+
+.heading {
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+}
+
+.line {
+  display: block;
+}
+
+.accent {
+  color: var(--accent);
+}

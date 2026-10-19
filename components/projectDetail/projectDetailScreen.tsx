@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { strings } from "@/constants/strings";
-import ProjectCover from "@/components/projects/projectCover";
+import ToolLogo from "@/components/toolLogo";
 import styles from "./projectDetailStyles.module.css";
 import type { ProjectDetailProps } from "./projectDetailTypes";
 import { useProjectDetail } from "./useProjectDetail";
@@ -14,28 +14,34 @@ export default function ProjectDetail({ project, next }: ProjectDetailProps) {
   const { nameReveal, rise, metaRows, links } = useProjectDetail(project);
 
   return (
-    <article className={styles.page}>
+    <article className={`accent-${project.discipline} ${styles.page}`}>
       <header className={styles.header}>
-        <Link className={styles.back} href="/#projects">
+        <Link className={styles.back} href="/#work">
           {s.back}
         </Link>
-        <h1 className={styles.name}>
+        <motion.p className="chip" {...rise(0)}>
+          {project.category}
+        </motion.p>
+        <h1 className={`display ${styles.name}`}>
           <span className={styles.mask}>
             <motion.span className={styles.line} {...nameReveal}>
               {project.name}
             </motion.span>
           </span>
         </h1>
-        <motion.p className={styles.tagline} {...rise(0)}>
+        <motion.p className={styles.tagline} {...rise(1)}>
           {project.tagline}
         </motion.p>
+        <motion.ul className={styles.stack} aria-label={s.stack} {...rise(2)}>
+          {project.stack.map((t) => (
+            <li key={t}>
+              <ToolLogo name={t} label />
+            </li>
+          ))}
+        </motion.ul>
       </header>
 
-      <motion.div className={styles.cover} {...rise(1)}>
-        <ProjectCover project={project} size="hero" />
-      </motion.div>
-
-      <motion.dl className={styles.meta} {...rise(0)}>
+      <motion.dl className={`card ${styles.meta}`} {...rise(2)}>
         {metaRows.map((row) => (
           <div key={row.label}>
             <dt>{row.label}</dt>
@@ -76,9 +82,12 @@ export default function ProjectDetail({ project, next }: ProjectDetailProps) {
       </div>
 
       {next && (
-        <Link className={styles.next} href={`/projects/${next.slug}`}>
+        <Link
+          className={`accent-${next.discipline} ${styles.next}`}
+          href={`/projects/${next.slug}`}
+        >
           <span className={styles.nextLabel}>{s.next}</span>
-          <span className={styles.nextName}>{next.name}</span>
+          <span className={`display ${styles.nextName}`}>{next.name}</span>
         </Link>
       )}
     </article>

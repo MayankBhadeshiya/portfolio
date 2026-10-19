@@ -1,0 +1,423 @@
+/* Reads --code, --data and --ship from the scene. */
+
+.wrap {
+  position: absolute;
+  top: 28%;
+  left: 31%;
+  z-index: 5;
+  width: 24%;
+  /* Sits low while the code is written, then rises into place as data arrives. */
+  transform: translateY(calc((1 - var(--data)) * 22%));
+}
+
+/* iPhone body: dark bezel around the screen. */
+.phone {
+  aspect-ratio: 9 / 19.5;
+  padding: 0.38rem;
+  border-radius: 2.1rem;
+  background: var(--color-ink);
+  box-shadow:
+    0 40px 80px var(--color-shadow-strong),
+    0 0 0 1px var(--color-grid-strong);
+}
+
+.screen {
+  position: relative;
+  height: 100%;
+  padding: 0.45rem 0.6rem 0.4rem;
+  border-radius: 1.75rem;
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  overflow: hidden;
+  font-size: 0.5rem;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.05rem 0.35rem 0;
+  font-size: 0.52rem;
+  font-weight: 600;
+}
+
+.island {
+  width: 34%;
+  height: 0.8rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+}
+
+.signal {
+  width: 0.95rem;
+  height: 0.42rem;
+  border-radius: 2px;
+  background: var(--color-ink);
+}
+
+/* ---------- Phase layers ---------- */
+
+.region {
+  position: relative;
+}
+
+.wire {
+  position: absolute;
+  inset: 0;
+  border: 1.5px dashed var(--color-grid-strong);
+  border-radius: 8px;
+  background: var(--color-ink-a06);
+  opacity: calc(1 - var(--code) * 1.3);
+}
+
+.note {
+  position: absolute;
+  top: -0.5rem;
+  left: 0.4rem;
+  z-index: 1;
+  padding: 0 0.25rem;
+  background: var(--color-surface);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.5rem;
+  color: var(--accent);
+  white-space: nowrap;
+  opacity: calc(1 - var(--code) * 2);
+}
+
+.noteBottom {
+  top: auto;
+  bottom: -0.5rem;
+}
+
+.skin {
+  position: relative;
+  opacity: clamp(0, calc(var(--code) * 2 - 0.8), 1);
+}
+
+/* ---------- Header, search, segment ---------- */
+
+.head {
+  margin-top: 0.4rem;
+  min-height: 2rem;
+}
+
+.headSkin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.greeting {
+  color: var(--color-muted);
+}
+
+.title {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+}
+
+.avatar {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-mobile), var(--color-react-cyan));
+}
+
+.search {
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  background: var(--color-paper);
+  color: var(--color-muted);
+}
+
+.segment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.15rem;
+  border-radius: 8px;
+  background: var(--color-paper);
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.segment span {
+  padding: 0.2rem;
+  border-radius: 6px;
+}
+
+.segment .segmentActive {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-weight: 600;
+  box-shadow: 0 1px 3px var(--color-shadow);
+}
+
+/* ---------- Order cards ---------- */
+
+.list {
+  flex: 1;
+  min-height: 0;
+}
+
+.list ul {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.card {
+  --i: 0;
+  min-width: 0;
+  overflow: hidden;
+  --in: clamp(0, calc(var(--data) * 4 - var(--i)), 1);
+  position: relative;
+  padding: 0.4rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  min-height: 2.3rem;
+}
+
+/* Grey placeholder card until its data arrives. */
+.cardSkeleton {
+  position: absolute;
+  inset: 0.4rem;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--color-ink-a06) 30%,
+    transparent 30% 36%,
+    var(--color-ink-a06) 36%
+  );
+  opacity: calc(1 - var(--in));
+}
+
+.cardLive {
+  display: flex;
+  gap: 0.4rem;
+  opacity: var(--in);
+  transform: translateY(calc((1 - var(--in)) * 6px));
+}
+
+.thumb {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 7px;
+  background: var(--color-mobile-a12);
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.cardText {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.cardName {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardPrice {
+  flex: none;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cardStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.46rem;
+}
+
+.cardStatus i {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.tracker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.15rem;
+  margin-top: 0.25rem;
+}
+
+.tracker span {
+  height: 0.18rem;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+
+.tracker .stepDone {
+  background: var(--accent);
+}
+
+.eta {
+  margin-top: 0.2rem;
+  color: var(--color-muted);
+  font-size: 0.45rem;
+}
+
+/* ---------- Tab bar ---------- */
+
+.tabbar {
+  min-height: 2rem;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0.3rem;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: 0.42rem;
+}
+
+.tabs span {
+  display: grid;
+  justify-items: center;
+  gap: 0.1rem;
+}
+
+.tabs svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tabs .tabActive {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.homeIndicator {
+  align-self: center;
+  width: 35%;
+  height: 0.2rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+}
+
+/* ---------- Fast Refresh (build) ---------- */
+
+.refresh {
+  position: absolute;
+  top: 1.7rem;
+  left: 50%;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  background: var(--color-editor);
+  color: var(--color-editor-text);
+  font-size: 0.48rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  opacity: calc(clamp(0, var(--data) * 6, 1) * clamp(0, (0.9 - var(--data)) * 6, 1));
+}
+
+/* ---------- Push notification (ship) ---------- */
+
+.notification {
+  position: absolute;
+  top: 1.5rem;
+  left: 0.4rem;
+  right: 0.4rem;
+  z-index: 4;
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.45rem;
+  border-radius: 12px;
+  background: var(--color-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px var(--color-shadow-strong);
+  opacity: var(--ship);
+  transform: translateY(calc((1 - var(--ship)) * -140%));
+}
+
+.appIcon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 6px;
+  background: var(--color-ink);
+  color: var(--color-surface);
+}
+
+.notifText {
+  min-width: 0;
+}
+
+.notifMeta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-muted);
+  font-size: 0.42rem;
+  letter-spacing: 0.04em;
+}
+
+.notifTitle {
+  font-weight: 700;
+}
+
+.notifBody {
+  color: var(--color-ink-soft);
+  font-size: 0.46rem;
+  line-height: 1.35;
+}
+
+/* ---------- Store badges (ship) ---------- */
+
+.badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+  opacity: var(--ship);
+  transform: translateY(calc((1 - var(--ship)) * 12px));
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    top: 4%;
+    left: auto;
+    right: 0;
+    width: 46%;
+    transform: translateY(calc((1 - var(--data)) * 6%));
+  }
+  .badges {
+    display: none;
+  }
+}

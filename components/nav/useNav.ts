@@ -11,15 +11,15 @@ const HIDE_AFTER = 400;
 const barMotion = { duration: 0.35, ease: [0.16, 1, 0.3, 1] as const };
 
 const sections = [
+  { id: "about", label: strings.nav.about },
   { id: "work", label: strings.nav.work },
-  { id: "projects", label: strings.nav.projects },
+  { id: "skills", label: strings.nav.skills },
   { id: "experience", label: strings.nav.experience },
   { id: "contact", label: strings.nav.contact },
 ];
 
-// Gives the bar a background once the page moves, and tucks it away while
-// scrolling down so it doesn't cover the pinned sections. Section links point
-// back to the home page when shown on another page.
+// Gives the bar a backdrop once the page moves, and tucks it away while
+// scrolling down. Section links point back to the home page from other pages.
 export function useNav() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
@@ -34,6 +34,7 @@ export function useNav() {
 
   const base = pathname === "/" ? "" : "/";
   const links: NavLink[] = sections.map((s) => ({ href: `${base}#${s.id}`, label: s.label }));
+  const contactHref = `${base}#contact`;
 
-  return { scrolled, hidden, links, barMotion };
+  return { scrolled, hidden, links, contactHref, barMotion };
 }

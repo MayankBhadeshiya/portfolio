@@ -1,0 +1,153 @@
+.terminal {
+  position: absolute;
+  left: 4%;
+  bottom: 0;
+  z-index: 2;
+  width: 54%;
+  height: 34%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  background: var(--color-editor);
+  color: var(--color-editor-text);
+  box-shadow: 0 30px 70px var(--color-shadow-strong);
+  overflow: hidden;
+  font-family: var(--font-mono), monospace;
+  font-size: clamp(0.55rem, 0.8vw, 0.68rem);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.7rem;
+  background: var(--color-editor-raised);
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-editor-line);
+}
+
+.title {
+  margin-left: 0.5rem;
+  color: var(--color-editor-muted);
+  font-size: 0.6rem;
+}
+
+/* Newest output sits at the bottom; older lines scroll up and out. */
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.15rem;
+  padding: 0.5rem 0.8rem 0.6rem;
+  overflow: hidden;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.prompt {
+  color: var(--color-react-cyan);
+}
+
+.muted {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-editor-muted);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.ok {
+  color: var(--color-syn-string);
+}
+
+/* Each block grows open when its phase starts. */
+.block {
+  --show: 0;
+  display: grid;
+  gap: 0.15rem;
+  max-height: calc(var(--show) * 9em);
+  opacity: var(--show);
+  overflow: hidden;
+}
+
+/* Metro and its QR code fold away when shipping starts, to make room. */
+.blockCode {
+  --show: calc(clamp(0, (var(--code) - 0.55) * 4, 1) * (1 - clamp(0, var(--ship) * 3, 1)));
+}
+
+.blockData {
+  --show: clamp(0, calc(var(--data) * 8), 1);
+}
+
+.blockShip {
+  --show: clamp(0, calc(var(--ship) * 3), 1);
+}
+
+.metro {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.2rem 0;
+}
+
+.qr {
+  flex: none;
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0.2rem;
+  border-radius: 4px;
+  background: var(--color-white);
+  fill: var(--color-ink);
+}
+
+.progress {
+  position: relative;
+  display: inline-block;
+  width: 7rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--color-editor-line);
+  overflow: hidden;
+}
+
+.progressFill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-react-cyan);
+  transform-origin: left;
+  transform: scaleX(var(--data));
+}
+
+.percent {
+  min-width: 2.5em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-editor-muted);
+}
+
+@media (max-width: 900px) {
+  .terminal {
+    left: 0;
+    width: 78%;
+    height: 40%;
+  }
+  .qr {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+  .progress {
+    width: 4rem;
+  }
+}

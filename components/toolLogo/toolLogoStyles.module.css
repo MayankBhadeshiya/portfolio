@@ -1,0 +1,44 @@
+.svg {
+  display: block;
+  flex: none;
+}
+
+.badge {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  padding: 0 0.2em;
+  border-radius: 4px;
+  background: var(--color-ink);
+  color: var(--color-surface);
+  font-family: var(--font-mono), monospace;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.chipDark {
+  border-color: var(--color-editor-line);
+  background: var(--color-editor-raised);
+  color: var(--color-editor-text);
+}
+
+.chipDark .badge {
+  background: var(--color-editor-text);
+  color: var(--color-editor);
+}

@@ -1,121 +1,137 @@
+/* Same left edge as the other sections; the timeline itself stays readable-width. */
 .section {
   max-width: var(--max);
   margin: 0 auto;
-  padding: clamp(6rem, 14vw, 11rem) var(--gutter);
+  padding: clamp(2.5rem, 5vw, 4rem) var(--gutter);
 }
 
-.title {
-  font-family: var(--font-serif), serif;
-  font-weight: 400;
-  font-size: clamp(2.8rem, 7vw, 6rem);
-  line-height: 0.95;
-  letter-spacing: -0.025em;
-  margin-bottom: clamp(3rem, 7vw, 5.5rem);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  gap: clamp(3rem, 8vw, 8rem);
-}
-
-.timelineWrap {
+.timeline {
+  --rail: 9.5rem;
+  max-width: 60rem;
   position: relative;
-  padding-left: 2.25rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
 }
 
-.timelineWrap::before,
+.track,
 .line {
-  content: "";
   position: absolute;
-  left: 0;
-  top: 0.4rem;
-  bottom: 0.4rem;
-  width: 1px;
+  top: 0.5rem;
+  bottom: 1rem;
+  left: var(--rail);
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 2px;
 }
 
-.timelineWrap::before {
+.track {
   background: var(--color-line);
 }
 
 .line {
   display: block;
-  background: var(--color-apricot);
+  background: linear-gradient(
+    to bottom,
+    var(--color-mobile),
+    var(--color-frontend),
+    var(--color-backend)
+  );
   transform-origin: top;
 }
 
-.timeline {
+.jobs {
   display: grid;
-  gap: clamp(2.75rem, 6vw, 4.5rem);
+  gap: 1.5rem;
 }
 
 .job {
   position: relative;
-}
-
-.job::before {
-  content: "";
-  position: absolute;
-  left: calc(-2.25rem - 4px);
-  top: 0.45rem;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--color-night);
-  border: 1px solid var(--color-apricot);
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
 }
 
 .period {
-  display: block;
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
+  padding: 1.35rem 1.75rem 0 0;
+  text-align: right;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
   font-variant-numeric: tabular-nums;
 }
 
+.dot {
+  position: absolute;
+  left: var(--rail);
+  top: 1.5rem;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 3px solid var(--color-frontend);
+}
+
+.jobCard {
+  margin-left: 1.75rem;
+  padding: 1.25rem 1.5rem 1.25rem 1.75rem;
+}
+
 .role {
-  margin-top: 0.5rem;
-  font-family: var(--font-serif), serif;
-  font-weight: 400;
-  font-size: clamp(1.9rem, 3.6vw, 3rem);
-  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
 }
 
 .company {
-  margin-top: 0.35rem;
-  font-size: 1.1rem;
-  color: var(--color-periwinkle);
+  margin-top: 0.2rem;
+  color: var(--color-ink-soft);
 }
 
 .summary {
-  margin-top: 0.85rem;
-  max-width: 55ch;
-  color: var(--color-text-muted);
-}
-
-.aside {
-  display: grid;
-  gap: 3rem;
-  align-content: start;
-}
-
-.asideTitle {
+  margin-top: 0.6rem;
   font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--color-text-muted);
-  padding-bottom: 0.9rem;
-  margin-bottom: 1.1rem;
-  border-bottom: 1px solid var(--color-line);
+  color: var(--color-muted);
 }
 
-.asideList {
+.creds {
+  max-width: 60rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
   display: grid;
-  gap: 0.9rem;
-  font-size: 1.15rem;
-  line-height: 1.4;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
 }
 
-@media (max-width: 860px) {
-  .grid {
+.credCard {
+  padding: 1.4rem 1.5rem 1.4rem 1.75rem;
+}
+
+.credTitle {
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.credList {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .timeline {
+    --rail: 0.5rem;
+  }
+  .job {
+    grid-template-columns: 1fr;
+  }
+  .period {
+    padding: 0 0 0.5rem 1.75rem;
+    text-align: left;
+  }
+  .dot {
+    top: 0.25rem;
+  }
+  .creds {
     grid-template-columns: 1fr;
   }
 }
