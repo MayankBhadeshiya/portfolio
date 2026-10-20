@@ -2,6 +2,8 @@
 
 Personal portfolio site for Mayank Bhadeshiya, built with Next.js, Motion and Lenis.
 
+**Live:** https://portfolio-eight-lyart-48.vercel.app — deployed on Vercel; every push to `main` goes to production.
+
 The signature moment is the hero, a live React Native / Expo / Next.js dev setup that builds an app as you scroll. In **sketch**, wireframes and blueprint labels appear. In **code**, a VS Code-style editor types a React Native screen while the Expo app on the phone styles itself. In **build**, Metro bundles in the terminal (with an Expo Go QR code), Fast Refresh flashes and the Next.js dashboard counts up. In **ship**, `eas build` and `vercel --prod` run, and the App Store and Google Play badges appear.
 
 ## Run it locally
