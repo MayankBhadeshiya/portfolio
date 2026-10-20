@@ -35,6 +35,17 @@ export default function About() {
               </div>
             ))}
           </motion.dl>
+
+          <motion.div className={styles.domains} {...rise(2)}>
+            <p className={styles.domainsLabel}>{strings.about.domainsLabel}</p>
+            <ul>
+              {profile.domains.map((d) => (
+                <li key={d} className="chip">
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
 
         <motion.div className={styles.cardCol} {...rise(1)}>

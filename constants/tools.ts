@@ -2,7 +2,19 @@
 // used in data/profile.ts and the UI. A name with no entry renders as a
 // lettered badge instead (e.g. AWS, which Simple Icons doesn't carry).
 import {
+  siAppletv,
   siAppstore,
+  siAstro,
+  siBootstrap,
+  siCss,
+  siGoogleanalytics,
+  siGoogletv,
+  siHtml5,
+  siLg,
+  siMongoose,
+  siMysql,
+  siPreact,
+  siSequelize,
   siClaude,
   siCursor,
   siDocker,
@@ -56,6 +68,11 @@ export const toolIcons: Record<string, SimpleIcon> = {
   LiveKit: siLivekit,
   "LiveKit (real-time voice)": siLivekit,
 
+  // Smart TV
+  "LG webOS": siLg,
+  "Apple TV": siAppletv,
+  "Google TV": siGoogletv,
+
   // Web
   React: siReact,
   "Next.js": siNextdotjs,
@@ -67,6 +84,11 @@ export const toolIcons: Record<string, SimpleIcon> = {
   Tailwind: siTailwindcss,
   Vercel: siVercel,
   Figma: siFigma,
+  Preact: siPreact,
+  Astro: siAstro,
+  Bootstrap: siBootstrap,
+  HTML5: siHtml5,
+  CSS: siCss,
 
   // Backend & cloud
   "Node.js": siNodedotjs,
@@ -74,6 +96,9 @@ export const toolIcons: Record<string, SimpleIcon> = {
   PostgreSQL: siPostgresql,
   MongoDB: siMongodb,
   Prisma: siPrisma,
+  MySQL: siMysql,
+  Sequelize: siSequelize,
+  Mongoose: siMongoose,
   Firebase: siFirebase,
   "Firebase & Cloud Functions": siFirebase,
   Docker: siDocker,
@@ -83,6 +108,7 @@ export const toolIcons: Record<string, SimpleIcon> = {
   Razorpay: siRazorpay,
   PayPal: siPaypal,
   "Payflow Pro": siPaypal,
+  "Google Analytics": siGoogleanalytics,
 
   // How I work
   Jest: siJest,
@@ -102,6 +128,11 @@ export const toolBadges: Record<string, string> = {
   Zustand: "Z",
   "Terra API": "T",
   "Terra API (wearables)": "T",
+  "VIZIO Companion Library": "V",
+  "Amazon Fire TV SDK": "FTV",
+  Wasp: "W",
+  OpenSaaS: "OS",
+  ChatGPT: "GPT",
 };
 
 export type ToolIcon = SimpleIcon;

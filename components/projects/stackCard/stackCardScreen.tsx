@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { strings } from "@/constants/strings";
 import ToolLogo from "@/components/toolLogo";
+import LockedPreview from "../lockedPreview";
 import styles from "./stackCardStyles.module.css";
 import type { StackCardProps } from "./stackCardTypes";
 import { useStackCard } from "./useStackCard";
@@ -49,6 +50,7 @@ export default function StackCard({
         </div>
 
         <div className={styles.side}>
+          {project.client && <LockedPreview project={project} />}
           <dl className={styles.metrics}>
             {metrics.map((m) => (
               <div key={m.label}>

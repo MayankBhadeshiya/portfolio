@@ -49,6 +49,23 @@
   color: var(--color-muted);
 }
 
+.domains {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.domainsLabel {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.domains ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
 .cardCol {
   display: flex;
   justify-content: center;

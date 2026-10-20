@@ -8,7 +8,7 @@ import type { BentoGroup } from "./skillsTypes";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 // Column spans on the 12-column bento, in data order. Bigger groups get more room.
-const SPANS = [7, 5, 4, 3, 5];
+const SPANS = [7, 5, 5, 7, 5, 7];
 
 export function useSkills() {
   const reduceMotion = usePrefersReducedMotion();

@@ -16,7 +16,7 @@ Then open http://localhost:3000. (On Windows PowerShell, use `npm.cmd` if `npm` 
 ## Editing content
 
 - [`data/profile.ts`](data/profile.ts) holds the résumé content: intro, disciplines, experience, skills, certifications and contact links. Add an `email`, `linkedin` or `resume` link under `links` to show it in the contact section.
-- `profile.projects` in the same file drives the "Selected work" stack and one page per project at `/projects/<slug>`. Each project has a `slug`, `name`, `category`, `discipline` (`mobile`, `frontend` or `backend`, which picks its accent color), `tagline`, `summary`, `role`, `platforms`, `stack`, `highlights` and optional `links` (`appStore`, `playStore`, `github`, `live`).
+- `profile.projects` in the same file drives the "Selected work" stack and one page per project at `/projects/<slug>`. Set `client: true` for NDA work: its preview is a blurred, code-made mock (`preview`: `web`, `mobile` or `tv`) and the Preview button shows a "preview locked" notice instead of screens.
 - [`constants/strings.ts`](constants/strings.ts) holds all other UI text, including the hero scene's copy.
 - [`constants/colors.ts`](constants/colors.ts) holds every color, and CSS reads them as `var(--color-*)`. The palette borrows from the stack: Expo ink, React blue (frontend), Expo indigo (mobile) and Node green (backend).
 - [`constants/tools.ts`](constants/tools.ts) maps tool names to their official logos from [Simple Icons](https://simpleicons.org). Add a name there and every chip that uses it shows the logo.

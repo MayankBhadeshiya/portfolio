@@ -29,6 +29,13 @@ export default function Experience() {
                 <h3 className={styles.role}>{job.role}</h3>
                 <p className={styles.company}>{job.company}</p>
                 {job.summary && <p className={styles.summary}>{job.summary}</p>}
+                {job.highlights && (
+                  <ul className={styles.highlights}>
+                    {job.highlights.map((h) => (
+                      <li key={h}>{h}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </motion.li>
           ))}
@@ -45,7 +52,7 @@ export default function Experience() {
                   {c.name}
                 </a>
                 <span className={styles.credMeta}>
-                  {c.issuer} · {s.verify}
+                  {c.issuer} · {c.issued} · {s.verify}
                 </span>
               </li>
             ))}
@@ -55,7 +62,12 @@ export default function Experience() {
           <h3 className={styles.credTitle}>{s.education}</h3>
           <ul className={styles.credList}>
             <li>
-              {profile.education.degree}, {profile.education.school}
+              <span>
+                {profile.education.degree}, {profile.education.school}
+              </span>
+              <span className={styles.credMeta}>
+                {profile.education.period} · {profile.education.grade}
+              </span>
             </li>
           </ul>
         </motion.div>

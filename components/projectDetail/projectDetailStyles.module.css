@@ -45,6 +45,10 @@
   color: var(--color-ink-soft);
 }
 
+.preview {
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
 .stack {
   display: flex;
   flex-wrap: wrap;

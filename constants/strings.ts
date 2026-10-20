@@ -184,6 +184,7 @@ export const strings = {
     statSince: "Building since",
     statCompanies: "Companies",
     statCerts: "Certifications",
+    domainsLabel: "Industries I've shipped for",
     cardLabel: "Build badge",
     cardCurrent: "Currently at",
   },
@@ -194,6 +195,14 @@ export const strings = {
     platforms: "Platforms",
     stack: "Stack",
     role: "Role",
+  },
+  lock: {
+    badge: "Client project",
+    preview: "Preview",
+    title: "Preview locked",
+    body: "This is a client project under NDA, so I can't show its screens publicly. Happy to walk you through it on a call.",
+    ask: "Ask for a walkthrough",
+    close: "Close",
   },
   skills: {
     eyebrow: "Toolkit",
@@ -230,6 +239,6 @@ export const strings = {
     appStore: "App Store",
     playStore: "Google Play",
     github: "GitHub",
-    live: "Live site",
+    live: "Product website ↗",
   },
 } as const;

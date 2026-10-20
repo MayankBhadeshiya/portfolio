@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { strings } from "@/constants/strings";
 import ToolLogo from "@/components/toolLogo";
+import LockedPreview from "@/components/projects/lockedPreview";
 import styles from "./projectDetailStyles.module.css";
 import type { ProjectDetailProps } from "./projectDetailTypes";
 import { useProjectDetail } from "./useProjectDetail";
@@ -40,6 +41,12 @@ export default function ProjectDetail({ project, next }: ProjectDetailProps) {
           ))}
         </motion.ul>
       </header>
+
+      {project.client && (
+        <motion.div className={styles.preview} {...rise(2)}>
+          <LockedPreview project={project} size="hero" />
+        </motion.div>
+      )}
 
       <motion.dl className={`card ${styles.meta}`} {...rise(2)}>
         {metaRows.map((row) => (
