@@ -192,6 +192,8 @@ export const strings = {
     eyebrow: "Selected work",
     lines: ["Things I've", "built."],
     view: "View project",
+    ndaNote:
+      "These are client projects under NDA, so product names are changed, links are left out and screens stay locked. Details on request.",
     platforms: "Platforms",
     stack: "Stack",
     role: "Role",
@@ -229,6 +231,7 @@ export const strings = {
   },
   projectDetail: {
     back: "All work",
+    ndaNote: "Client project under NDA — the name is changed and screens are locked.",
     role: "Role",
     platforms: "Platforms",
     stack: "Stack",

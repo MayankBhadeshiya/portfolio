@@ -45,6 +45,14 @@
   color: var(--color-ink-soft);
 }
 
+.nda {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px dashed var(--color-grid-strong);
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+}
+
 .preview {
   margin-top: clamp(2rem, 5vw, 3rem);
 }

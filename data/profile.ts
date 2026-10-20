@@ -278,6 +278,8 @@ export const profile = {
 
   // Projects for the "Selected work" section and the /projects/<slug> pages.
   // Client projects show a blurred, locked preview instead of real screens.
+  // These are client products under NDA: names are codenames, there are no
+  // links, and descriptions stay general. Never put a real product name here.
   projects: [
     {
       slug: "wellnest",
@@ -288,7 +290,7 @@ export const profile = {
       preview: "web",
       tagline: "A wellness platform for booking sessions with expert consultants.",
       summary:
-        "WellNest connects people with consultants in traditional medicine, nutrition, therapy, NLP, Ayurveda, life coaching and more. The live web platform lets users browse consultants, view detailed profiles and book sessions; an admin panel handles consultant onboarding, services, categories and content. A React Native app for mobile-first booking and wellness-goal tracking is in development.",
+        "A wellness platform that connects people with consultants across traditional medicine, nutrition, therapy, life coaching and more. On the web, users browse consultants, view detailed profiles and book sessions; an admin panel handles consultant onboarding, services, categories and content. A React Native app brings booking and wellness-goal tracking to mobile.",
       role: "Full Stack Developer",
       platforms: ["Web", "iOS", "Android"],
       stack: ["React", "React Native", "Node.js", "MongoDB", "Mongoose", "Stripe", "PayPal"],
@@ -300,7 +302,6 @@ export const profile = {
         "Reworked key booking journeys for clearer navigation.",
         "Integrated Stripe and PayPal for secure payments.",
       ],
-      links: { live: "https://wellnest.fr/" },
     },
     {
       slug: "petpass",
@@ -311,7 +312,7 @@ export const profile = {
       preview: "web",
       tagline: "Animal Health and Rabies certificates for pets travelling from the UK to the EU.",
       summary:
-        "PetPass is a UK platform that generates Animal Health Certificates and Rabies Certificates for pets travelling to the EU. It has two major modules — a Vet Practice Portal and an Admin Panel — covering appointments, pet records, certificates, invoicing and team collaboration, with online payments through Stripe.",
+        "A platform that issues animal health and rabies certificates for pets travelling internationally. It has two major modules — a vet practice portal and an admin panel — covering appointments, pet records, certificates, invoicing and team collaboration, with online payments through Stripe.",
       role: "Full Stack Developer",
       platforms: ["Web"],
       stack: ["Wasp", "OpenSaaS", "React", "PostgreSQL", "Prisma", "Stripe"],
@@ -323,7 +324,6 @@ export const profile = {
         "Integrated Stripe for certificate bookings and vet services.",
         "Set up CI/CD and production deployment with proper environment configuration.",
       ],
-      links: { live: "https://petpass.com/" },
     },
     {
       slug: "canvascast",
@@ -334,7 +334,7 @@ export const profile = {
       preview: "tv",
       tagline: "Curated art carousels streamed to phones and smart TVs.",
       summary:
-        "CanvasCast is a cross-platform art carousel for mobile and smart TVs. People customise and stream curated art displays with configurable transitions, styles and subscription tiers. It spans a React Native mobile app, one TV app architecture for VIZIO, LG, Apple TV and Google TV, and an Astro marketing site.",
+        "A cross-platform art carousel for phones and smart TVs. People customise and stream curated art displays with configurable transitions, styles and subscription tiers. It spans a React Native mobile app, one TV app architecture for several major smart-TV platforms, and an Astro marketing site.",
       role: "Frontend Developer",
       platforms: ["iOS", "Android", "LG webOS", "VIZIO", "Apple TV", "Google TV"],
       stack: [
@@ -353,7 +353,6 @@ export const profile = {
         "Built a responsive Tailwind UI and tuned cross-platform performance.",
         "Supported the Astro marketing and help-desk site.",
       ],
-      links: { live: "https://canvascast.com/" },
     },
     {
       slug: "voyagelog",
@@ -364,7 +363,7 @@ export const profile = {
       preview: "web",
       tagline: "Offline-ready noon reporting for vessel crews and onshore teams.",
       summary:
-        "VoyageLog is a maritime-tech platform that helps ship owners, operators and charterers cut emissions with vessel and voyage data. I worked on the cloud platform where crews and onshore teams create and sync noon reports online and offline, with validation across 200+ data points, multi-user collaboration and APIs for analytics.",
+        "A maritime-tech platform that helps ship owners, operators and charterers cut emissions with vessel and voyage data. I worked on the cloud platform where crews and onshore teams create and sync noon reports online and offline, with validation across 200+ data points, multi-user collaboration and APIs for analytics.",
       role: "Full Stack Developer",
       platforms: ["Web"],
       stack: ["Node.js", "Next.js", "React", "Preact", "PostgreSQL", "Prisma", "AWS"],
@@ -376,7 +375,6 @@ export const profile = {
         "Developed the Noon Report APIs for real-time retrieval and management.",
         "Deployed a scalable serverless backend on AWS.",
       ],
-      links: { live: "https://voyagelog.com/" },
     },
   ] as Project[],
 };

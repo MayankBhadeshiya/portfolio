@@ -19,6 +19,12 @@ export default function Projects() {
           eyebrow={strings.projects.eyebrow}
           lines={strings.projects.lines}
         />
+        <p className={styles.nda}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" />
+          </svg>
+          {strings.projects.ndaNote}
+        </p>
 
         <ol ref={listRef} className={styles.stack}>
           {cards.map((card) => (

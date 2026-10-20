@@ -33,6 +33,11 @@ export default function ProjectDetail({ project, next }: ProjectDetailProps) {
         <motion.p className={styles.tagline} {...rise(1)}>
           {project.tagline}
         </motion.p>
+        {project.client && (
+          <motion.p className={styles.nda} {...rise(1)}>
+            {s.ndaNote}
+          </motion.p>
+        )}
         <motion.ul className={styles.stack} aria-label={s.stack} {...rise(2)}>
           {project.stack.map((t) => (
             <li key={t}>
