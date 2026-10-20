@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { profile } from "@/data/profile";
 import { colors, colorsToCssVars } from "@/constants/colors";
 import { strings } from "@/constants/strings";
@@ -40,6 +41,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <SmoothScroll>{children}</SmoothScroll>
         <Cursor />
+        {/* Vercel Web Analytics: privacy-friendly page views, no cookies. */}
+        <Analytics />
       </body>
     </html>
   );
