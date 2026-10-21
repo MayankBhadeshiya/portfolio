@@ -9,13 +9,18 @@ import type { StackCardData } from "./projectsTypes";
 
 // How much smaller each buried card ends up than the one in front of it.
 const SCALE_STEP = 0.05;
-// Inside the stack, one scroll gesture moves exactly one card.
-const SLIDE_DURATION = 0.75; // seconds
-// Wheel events closer together than this belong to the same gesture
-// (trackpad momentum, a fast wheel spin), so they never skip a second card.
-const GESTURE_GAP = 220; // ms
+// Inside the stack, one scroll gesture moves exactly one card. The slide is
+// quick and starts on the first wheel event, so it feels like normal scrolling.
+const SLIDE_DURATION = 0.5; // seconds
+// The next gesture is accepted once the slide is this far along.
+const READY_AT = 0.6;
+// Wheel events closer together than this, and not speeding up, are the same
+// gesture's momentum, which is absorbed so it never skips a second card.
+const GESTURE_GAP = 90; // ms
 // A swipe shorter than this on touch screens is ignored.
-const SWIPE_MIN = 30; // px
+const SWIPE_MIN = 20; // px
+// Starts fast and settles, like a flicked scroll.
+const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 // How close (as a share of the viewport) you must be to the first or last
 // card before the stack catches the scroll.
 const CATCH = 0.2;
@@ -33,8 +38,13 @@ export function useProjects() {
     if (!list || list.children.length < 2) return;
 
     let busyUntil = 0;
+    // Where the running slide is headed, and when it ends.
+    let slideTarget = 0;
+    let slideEnd = 0;
     let lastWheel = 0;
     let slid = false;
+    let lastSize = 0;
+    let lastDir = 0;
     let touchStartY = 0;
     let touchTarget: number | null = null;
 
@@ -50,7 +60,8 @@ export function useProjects() {
     // The card to move to for a gesture in `dir`, or null to scroll freely.
     const targetFor = (dir: number): number | null => {
       const points = snaps();
-      const y = window.scrollY;
+      // Mid-slide, count from where the slide is going, not where it is.
+      const y = performance.now() < slideEnd ? slideTarget : window.scrollY;
       const first = points[0];
       const last = points[points.length - 1];
       const catchZone = window.innerHeight * CATCH;
@@ -63,9 +74,12 @@ export function useProjects() {
     };
 
     const slideTo = (top: number) => {
-      busyUntil = performance.now() + SLIDE_DURATION * 1000;
+      const now = performance.now();
+      busyUntil = now + SLIDE_DURATION * READY_AT * 1000;
+      slideEnd = now + SLIDE_DURATION * 1000;
+      slideTarget = top;
       if (lenis) {
-        lenis.scrollTo(top, { duration: SLIDE_DURATION, lock: true, force: true });
+        lenis.scrollTo(top, { duration: SLIDE_DURATION, easing: easeOut, force: true });
       } else {
         window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
       }
@@ -74,13 +88,20 @@ export function useProjects() {
     const onWheel = (event: WheelEvent) => {
       if (event.ctrlKey || Math.abs(event.deltaY) < 2) return;
       const now = performance.now();
-      // A pause between wheel events starts a new gesture.
-      if (now - lastWheel > GESTURE_GAP) slid = false;
+      const size = Math.abs(event.deltaY);
+      const dir = Math.sign(event.deltaY);
+      // A pause, a change of direction or a fresh push (the delta jumps up
+      // instead of decaying like momentum) starts a new gesture.
+      if (now - lastWheel > GESTURE_GAP || dir !== lastDir || size > lastSize * 1.5 + 4) {
+        slid = false;
+      }
       lastWheel = now;
-      // Absorb input while sliding and for the rest of the gesture that slid,
-      // so momentum never carries on to a second card.
-      const target = now < busyUntil || slid ? null : targetFor(Math.sign(event.deltaY));
-      if (target === null && !slid && now >= busyUntil) return;
+      lastSize = size;
+      lastDir = dir;
+      const ready = now >= busyUntil;
+      const target = ready && !slid ? targetFor(dir) : null;
+      // Outside the stack, scroll normally.
+      if (target === null && !slid && ready) return;
       event.preventDefault();
       event.stopPropagation();
       if (target === null) return;
