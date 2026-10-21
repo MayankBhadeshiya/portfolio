@@ -12,7 +12,7 @@ const s = strings.scene;
 // zsh session: create the app, start Metro (with an Expo Go QR code), bundle,
 // then ship with EAS and Vercel. Each block appears with its phase.
 export default function TerminalPane({ data }: TerminalPaneProps) {
-  const { qrCells, qrSize, percent } = useTerminalPane(data);
+  const { qrPath, qrSize, percent } = useTerminalPane(data);
 
   return (
     <div className={styles.terminal}>
@@ -34,9 +34,7 @@ export default function TerminalPane({ data }: TerminalPaneProps) {
           </p>
           <div className={styles.metro}>
             <svg className={styles.qr} viewBox={`0 0 ${qrSize} ${qrSize}`}>
-              {qrCells.map((c) => (
-                <rect key={`${c.x}-${c.y}`} x={c.x} y={c.y} width="1" height="1" />
-              ))}
+              <path d={qrPath} />
             </svg>
             <div>
               <p className={styles.muted}>{s.metroWaiting}</p>

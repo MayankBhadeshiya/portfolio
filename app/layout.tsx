@@ -34,7 +34,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    // suppressHydrationWarning: browsers and extensions may add attributes to
+    // <html> (theme styles, classes) before React hydrates; only <html> itself is exempt.
+    <html lang="en" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <style dangerouslySetInnerHTML={{ __html: colorsToCssVars() }} />
       </head>

@@ -1,6 +1,8 @@
 /* Reads --code, --data and --ship from the scene. */
 
 .wrap {
+  /* Composited layer: scroll moves and fades it without repainting. */
+  will-change: transform, opacity;
   position: absolute;
   top: 28%;
   left: 31%;

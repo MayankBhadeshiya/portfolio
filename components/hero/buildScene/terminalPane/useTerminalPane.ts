@@ -42,9 +42,13 @@ function buildQr(): QrCell[] {
   return cells;
 }
 
-const QR_CELLS = buildQr();
+// All cells as one SVG path: a single element instead of ~220, which keeps
+// the scene's per-frame style recalculation cheap while the hero scrolls.
+const QR_PATH = buildQr()
+  .map((c) => `M${c.x} ${c.y}h1v1h-1z`)
+  .join("");
 
 export function useTerminalPane(data: MotionValue<number>) {
   const percent = useTransform(data, (v) => `${Math.round(v * 100)}%`);
-  return { qrCells: QR_CELLS, qrSize: QR_SIZE, percent };
+  return { qrPath: QR_PATH, qrSize: QR_SIZE, percent };
 }

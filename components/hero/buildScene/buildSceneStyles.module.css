@@ -28,6 +28,8 @@
 /* ---------- React atom ---------- */
 
 .atom {
+  /* Composited layer: scroll moves and fades it without repainting. */
+  will-change: transform, opacity;
   position: absolute;
   top: 50%;
   left: 52%;
@@ -44,6 +46,8 @@
    as the product in front fills with data. */
 
 .back {
+  /* Composited layer: scroll moves and fades it without repainting. */
+  will-change: transform, opacity;
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -55,6 +59,8 @@
 /* ---------- Ship toast ---------- */
 
 .shipToast {
+  /* Composited layer: scroll moves and fades it without repainting. */
+  will-change: transform, opacity;
   position: absolute;
   top: -2%;
   left: 6%;

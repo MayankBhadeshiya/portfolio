@@ -22,6 +22,9 @@
   border-radius: 20px;
   box-shadow: 0 -12px 40px var(--color-shadow);
   transform-origin: top center;
+  /* Own compositor layer: the scroll-driven scale moves the painted card
+     instead of repainting it (with its shadow and blurred preview) each frame. */
+  will-change: transform;
 }
 
 .card::before {
