@@ -50,7 +50,11 @@ export default function StackCard({
         </div>
 
         <div className={styles.side}>
-          {project.client && <LockedPreview project={project} />}
+          {project.client && (
+            <div className={styles.preview}>
+              <LockedPreview project={project} />
+            </div>
+          )}
           <dl className={styles.metrics}>
             {metrics.map((m) => (
               <div key={m.label}>
