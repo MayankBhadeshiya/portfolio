@@ -1,6 +1,6 @@
 /* Same left edge as the other sections; the timeline itself stays readable-width. */
 .section {
-  max-width: var(--max);
+  max-width: var(--max-padded);
   margin: 0 auto;
   padding: clamp(2.5rem, 5vw, 4rem) var(--gutter);
 }

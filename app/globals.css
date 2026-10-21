@@ -4,6 +4,9 @@
 :root {
   --gutter: clamp(1.25rem, 5vw, 4.5rem);
   --max: 80rem;
+  /* Width of a section that carries its own side padding: the same content
+     width (--max) as sections with an inner wrapper, so every edge lines up. */
+  --max-padded: calc(var(--max) + 2 * var(--gutter));
   --radius: 14px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
