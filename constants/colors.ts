@@ -52,6 +52,10 @@ export const colors = {
   synString: "#98c379",
   synFunc: "#61afef",
 
+  // AWS certification badge in the hero (AWS navy and orange).
+  awsNavy: "#232f3e",
+  awsOrange: "#ff9900",
+
   // Status
   success: "#30a46c",
   white: "#ffffff",

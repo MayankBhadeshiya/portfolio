@@ -13,7 +13,7 @@
   box-shadow: 0 30px 70px var(--color-shadow-strong);
   overflow: hidden;
   font-family: var(--font-mono), monospace;
-  font-size: clamp(0.55rem, 0.8vw, 0.68rem);
+  font-size: 0.68rem;
 }
 
 .bar {

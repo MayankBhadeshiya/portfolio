@@ -1,6 +1,11 @@
+/* Every item sticks at the same line and is the same height (the list uses
+   equal rows), so at the end the whole stack lets go and scrolls up together.
+   The step down for each card comes from padding inside the item instead. */
 .item {
   position: sticky;
-  top: calc(12vh + var(--i) * 1.5rem);
+  top: 12vh;
+  display: grid;
+  padding-top: calc(var(--i) * 1.5rem);
 }
 
 .card {
@@ -102,7 +107,8 @@
 
 @media (max-width: 860px) {
   .item {
-    top: calc(5rem + var(--i) * 0.9rem);
+    top: 5rem;
+    padding-top: calc(var(--i) * 0.9rem);
   }
   .card {
     grid-template-columns: 1fr;

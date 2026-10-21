@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { profile } from "@/data/profile";
 import { strings } from "@/constants/strings";
 import ToolLogo from "@/components/toolLogo";
+import AwsBadge from "./awsBadge";
 import BuildScene from "./buildScene";
 import styles from "./heroStyles.module.css";
 import { useHero } from "./useHero";
@@ -49,6 +50,10 @@ export default function Hero() {
             <a className={styles.secondary} href="#contact">
               {s.getInTouch}
             </a>
+          </motion.div>
+
+          <motion.div className={styles.cert} {...rise(4)}>
+            <AwsBadge />
           </motion.div>
 
           <motion.div className={styles.stepper} {...rise(4)}>

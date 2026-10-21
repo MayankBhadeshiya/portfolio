@@ -1,6 +1,7 @@
 .hero {
   position: relative;
-  height: 440vh;
+  /* Short pin: the build plays out over about one screen of scrolling. */
+  height: 210vh;
 }
 
 .sticky {
@@ -124,6 +125,10 @@
   border-color: var(--color-ink);
 }
 
+.cert {
+  display: flex;
+}
+
 .stepper {
   display: grid;
   gap: 0.6rem;
@@ -221,6 +226,13 @@
   justify-self: end;
   width: min(100%, calc(76svh * 8 / 7));
   aspect-ratio: 8 / 7;
+}
+
+/* Short desktop screens: drop the stack row so the copy fits the pinned view. */
+@media (max-height: 760px) and (min-width: 901px) {
+  .stack {
+    display: none;
+  }
 }
 
 @media (max-width: 1100px) {

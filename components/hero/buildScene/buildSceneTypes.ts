@@ -12,3 +12,10 @@ export type BuildPhases = {
 export type BuildSceneProps = {
   phases: BuildPhases;
 };
+
+// The fixed canvas size the scene is drawn at, and how much it's scaled by.
+export type SceneFit = {
+  width: number;
+  height: number;
+  scale: number;
+};

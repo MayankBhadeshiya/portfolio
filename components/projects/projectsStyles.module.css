@@ -35,6 +35,7 @@
 .stack {
   margin-top: clamp(2.5rem, 5vw, 4rem);
   display: grid;
+  grid-auto-rows: 1fr;
   gap: 20vh;
   padding-bottom: 6vh;
 }

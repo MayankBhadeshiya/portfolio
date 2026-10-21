@@ -54,7 +54,7 @@
   display: grid;
   grid-template-columns: 22% 1fr;
   min-height: 0;
-  font-size: 0.6rem;
+  font-size: 0.66rem;
 }
 
 /* ---------- Phase layers ---------- */
@@ -151,7 +151,8 @@
 .main {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: auto auto minmax(0, 1fr);
+  /* KPIs, then the chart and the orders table full width, one above the other. */
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
   gap: 0.5rem;
   padding: 0.6rem 0.7rem 0.7rem;
   min-height: 0;
@@ -240,8 +241,9 @@
   min-height: 0;
 }
 
-.chartCard {
-  grid-column: span 2;
+.chartCard,
+.tableCard {
+  grid-column: 1 / -1;
 }
 
 .chartCard .skin,
@@ -298,7 +300,7 @@
   gap: 0.25rem;
   align-items: center;
   padding: 0.22rem 0;
-  font-size: 0.5rem;
+  font-size: 0.56rem;
   white-space: nowrap;
 }
 
@@ -310,7 +312,7 @@
 .bodyRow {
   --r: 0;
   border-bottom: 1px solid var(--color-line);
-  opacity: clamp(0, calc(var(--data) * 4 - var(--r)), 1);
+  opacity: clamp(0, calc(var(--data) * 5 - var(--r)), 1);
 }
 
 .bodyRow[data-row="1"] {
@@ -319,6 +321,10 @@
 
 .bodyRow[data-row="2"] {
   --r: 2;
+}
+
+.bodyRow[data-row="3"] {
+  --r: 3;
 }
 
 .mono {
@@ -354,7 +360,8 @@
 .toast {
   position: absolute;
   right: 0.7rem;
-  bottom: 0.7rem;
+  /* Over the chart, clear of the orders table. */
+  bottom: 38%;
   display: flex;
   align-items: center;
   gap: 0.5rem;

@@ -32,6 +32,13 @@ export const strings = {
     // Logo shown on each step, by tool name in constants/tools.ts.
     stepTools: ["Figma", "React", "Expo", "Vercel"],
     stackLabel: "Daily stack",
+    aws: {
+      mark: "aws",
+      eyebrow: "AWS Certified",
+      title: "Solutions Architect – Associate",
+      verify: "Verify ↗",
+      label: "Verify my AWS Certified Solutions Architect – Associate badge on Credly",
+    },
     stack: ["React Native", "Expo", "Next.js", "TypeScript", "Node.js", "Firebase"],
   },
   editor: {

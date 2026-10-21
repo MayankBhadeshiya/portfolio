@@ -17,37 +17,41 @@ const s = strings.scene;
 // sit at the back; the Next.js dashboard and the Expo app come forward and
 // fill with real data, then ship. Decorative.
 export default function BuildScene({ phases }: BuildSceneProps) {
-  const { vars, spin, reactPath } = useBuildScene(phases);
+  const { fitRef, canvasStyle, vars, spin, reactPath } = useBuildScene(phases);
 
   return (
-    <motion.div className={styles.scene} style={vars} aria-hidden="true">
-      {/* React atom, turning slowly behind everything */}
-      <motion.svg className={styles.atom} viewBox="0 0 24 24" style={{ rotate: spin }}>
-        <path d={reactPath} />
-      </motion.svg>
+    <div ref={fitRef} className={styles.fit} aria-hidden="true">
+      <div className={styles.canvas} style={canvasStyle}>
+        <motion.div className={styles.scene} style={vars}>
+          {/* React atom, turning slowly behind everything */}
+          <motion.svg className={styles.atom} viewBox="0 0 24 24" style={{ rotate: spin }}>
+            <path d={reactPath} />
+          </motion.svg>
 
-      {/* Back: the tools */}
-      <div className={styles.back}>
-        <CodeEditor />
-        <TerminalPane data={phases.data} />
+          {/* Back: the tools */}
+          <div className={styles.back}>
+            <CodeEditor />
+            <TerminalPane data={phases.data} />
+          </div>
+
+          {/* Front: the product */}
+          <Dashboard data={phases.data} />
+          <ExpoPhone />
+
+          {/* Ship */}
+          <div className={styles.shipToast}>
+            <span className={styles.shipCheck}>{s.check}</span>
+            <div>
+              <p className={styles.shipTitle}>{s.shipTitle}</p>
+              <p className={styles.shipBody}>{s.shipBody}</p>
+            </div>
+            <div className={styles.shipLogos}>
+              <ToolLogo name="Expo" size={16} tone="dark" />
+              <ToolLogo name="Vercel" size={16} tone="dark" />
+            </div>
+          </div>
+        </motion.div>
       </div>
-
-      {/* Front: the product */}
-      <Dashboard data={phases.data} />
-      <ExpoPhone />
-
-      {/* Ship */}
-      <div className={styles.shipToast}>
-        <span className={styles.shipCheck}>{s.check}</span>
-        <div>
-          <p className={styles.shipTitle}>{s.shipTitle}</p>
-          <p className={styles.shipBody}>{s.shipBody}</p>
-        </div>
-        <div className={styles.shipLogos}>
-          <ToolLogo name="Expo" size={16} tone="dark" />
-          <ToolLogo name="Vercel" size={16} tone="dark" />
-        </div>
-      </div>
-    </motion.div>
+    </div>
   );
 }

@@ -49,7 +49,7 @@
   /* 0 → 1 as this line types itself in. */
   --typed: clamp(0, calc(var(--code) * var(--n) - var(--i)), 1);
   display: flex;
-  font-size: clamp(0.56rem, 0.85vw, 0.72rem);
+  font-size: 0.72rem;
   line-height: 1.75;
   white-space: pre;
 }

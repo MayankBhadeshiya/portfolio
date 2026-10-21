@@ -1,6 +1,22 @@
 /* --code, --data and --ship run 0 → 1 and are set on .scene from scroll.
    Child panes (editor, terminal, dashboard, phone) read them too. */
 
+/* Fills the stage; the canvas inside is drawn at a fixed size and scaled to
+   fit, centred (--cw, --ch and --fit come from useBuildScene). */
+.fit {
+  position: absolute;
+  inset: 0;
+}
+
+.canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--cw, 800px);
+  height: var(--ch, 700px);
+  transform: translate(-50%, -50%) scale(var(--fit, 1));
+}
+
 .scene {
   --code: 0;
   --data: 0;
