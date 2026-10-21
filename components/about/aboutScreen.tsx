@@ -6,6 +6,7 @@ import { strings } from "@/constants/strings";
 import SectionHeading from "@/components/sectionHeading";
 import ToolLogo from "@/components/toolLogo";
 import TiltCard from "./tiltCard";
+import AiWorkflow from "./aiWorkflow";
 import styles from "./aboutStyles.module.css";
 import { useAbout } from "./useAbout";
 
@@ -72,6 +73,8 @@ export default function About() {
           </motion.li>
         ))}
       </ul>
+
+      <AiWorkflow />
     </section>
   );
 }

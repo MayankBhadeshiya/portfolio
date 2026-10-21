@@ -57,6 +57,10 @@
   .card {
     grid-column: span 6;
   }
+  /* An odd last card fills the row. */
+  .card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 620px) {

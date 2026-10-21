@@ -31,6 +31,7 @@ import {
   siJavascript,
   siJest,
   siLivekit,
+  siModelcontextprotocol,
   siMongodb,
   siNextdotjs,
   siNodedotjs,
@@ -121,6 +122,16 @@ export const toolIcons: Record<string, SimpleIcon> = {
   "Claude Code": siClaude,
   Cursor: siCursor,
   "GitHub Copilot": siGithubcopilot,
+
+  // AI & agentic coding
+  Skills: siClaude,
+  "Rules & CLAUDE.md": siClaude,
+  Hooks: siClaude,
+  Plugins: siClaude,
+  "MCP servers": siModelcontextprotocol,
+  "Expo MCP": siExpo,
+  "Expo skills": siExpo,
+  "RevenueCat MCP": siRevenuecat,
 };
 
 // Real tools that Simple Icons doesn't carry: shown as a lettered badge.
@@ -131,6 +142,7 @@ export const toolBadges: Record<string, string> = {
   Zustand: "Z",
   "Terra API": "T",
   "Terra API (wearables)": "T",
+  "Terra docs plugin": "T",
   "VIZIO Companion Library": "V",
   "Amazon Fire TV SDK": "FTV",
   Wasp: "W",
