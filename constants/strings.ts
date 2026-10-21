@@ -33,7 +33,6 @@ export const strings = {
     stepTools: ["Figma", "React", "Expo", "Vercel"],
     stackLabel: "Daily stack",
     aws: {
-      mark: "aws",
       eyebrow: "AWS Certified",
       title: "Solutions Architect – Associate",
       verify: "Verify ↗",

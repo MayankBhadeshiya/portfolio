@@ -3,7 +3,7 @@
   align-items: center;
   gap: 0.75rem;
   justify-self: start;
-  padding: 0.5rem 0.9rem 0.5rem 0.55rem;
+  padding: 0.4rem 0.9rem 0.4rem 0.45rem;
   border-radius: 14px;
   border: 1px solid var(--color-line);
   background: var(--color-surface);
@@ -19,30 +19,10 @@
   transform: translateY(-1px);
 }
 
-.hex {
+.image {
   flex: none;
-  width: 2.4rem;
+  width: 3.1rem;
   height: auto;
-}
-
-.hexShape {
-  fill: var(--color-aws-navy);
-}
-
-.mark {
-  fill: var(--color-white);
-  font-family: var(--font-sans), sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.smile {
-  fill: none;
-  stroke: var(--color-aws-orange);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 .text {
@@ -74,8 +54,8 @@
     gap: 0.55rem;
     padding: 0.35rem 0.7rem 0.35rem 0.4rem;
   }
-  .hex {
-    width: 1.9rem;
+  .image {
+    width: 2.4rem;
   }
   .title {
     font-size: 0.8rem;
