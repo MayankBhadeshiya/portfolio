@@ -9,14 +9,17 @@ import type { StackCardData } from "./projectsTypes";
 
 // How much smaller each buried card ends up than the one in front of it.
 const SCALE_STEP = 0.05;
-// Inside the stack, one scroll gesture moves exactly one card. The slide is
-// quick and starts on the first wheel event, so it feels like normal scrolling.
-const SLIDE_DURATION = 0.5; // seconds
-// The next gesture is accepted once the slide is this far along.
-const READY_AT = 0.6;
-// Wheel events closer together than this, and not speeding up, are the same
-// gesture's momentum, which is absorbed so it never skips a second card.
-const GESTURE_GAP = 90; // ms
+// Inside the stack, one scroll gesture moves exactly one card. The slide
+// starts on the first wheel event, so it responds like normal scrolling.
+const SLIDE_DURATION = 0.6; // seconds
+// After a slide lands, the card rests this long before the next can start,
+// so a hard flick stops on one card instead of running through several.
+const REST = 350; // ms
+// After the rest, a wheel event moves the next card only if it starts a new
+// gesture: it comes after a pause, or it's a real push rather than the small
+// tail of the previous flick's momentum.
+const GESTURE_GAP = 100; // ms
+const PUSH = 30; // wheel delta
 // A swipe shorter than this on touch screens is ignored.
 const SWIPE_MIN = 20; // px
 // Starts fast and settles, like a flicked scroll.
@@ -43,7 +46,6 @@ export function useProjects() {
     let slideEnd = 0;
     let lastWheel = 0;
     let slid = false;
-    let lastSize = 0;
     let lastDir = 0;
     let touchStartY = 0;
     let touchTarget: number | null = null;
@@ -75,7 +77,7 @@ export function useProjects() {
 
     const slideTo = (top: number) => {
       const now = performance.now();
-      busyUntil = now + SLIDE_DURATION * READY_AT * 1000;
+      busyUntil = now + SLIDE_DURATION * 1000 + REST;
       slideEnd = now + SLIDE_DURATION * 1000;
       slideTarget = top;
       if (lenis) {
@@ -86,22 +88,27 @@ export function useProjects() {
     };
 
     const onWheel = (event: WheelEvent) => {
-      if (event.ctrlKey || Math.abs(event.deltaY) < 2) return;
+      if (event.ctrlKey) return;
       const now = performance.now();
-      const size = Math.abs(event.deltaY);
-      const dir = Math.sign(event.deltaY);
-      // A pause, a change of direction or a fresh push (the delta jumps up
-      // instead of decaying like momentum) starts a new gesture.
-      if (now - lastWheel > GESTURE_GAP || dir !== lastDir || size > lastSize * 1.5 + 4) {
-        slid = false;
+      // The faint last ticks of momentum: never start a slide, but don't let
+      // them nudge a card that just landed either.
+      if (Math.abs(event.deltaY) < 2) {
+        if (slid || now < busyUntil) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        return;
       }
+      const dir = Math.sign(event.deltaY);
+      const newGesture =
+        now - lastWheel > GESTURE_GAP || dir !== lastDir || Math.abs(event.deltaY) >= PUSH;
       lastWheel = now;
-      lastSize = size;
       lastDir = dir;
-      const ready = now >= busyUntil;
-      const target = ready && !slid ? targetFor(dir) : null;
+      if (now >= busyUntil && newGesture) slid = false;
+      const ready = now >= busyUntil && !slid;
+      const target = ready ? targetFor(dir) : null;
       // Outside the stack, scroll normally.
-      if (target === null && !slid && ready) return;
+      if (target === null && ready) return;
       event.preventDefault();
       event.stopPropagation();
       if (target === null) return;
