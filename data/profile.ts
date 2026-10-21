@@ -85,6 +85,7 @@ export const profile = {
   // Industries the client work has covered.
   domains: [
     "Maritime & vessel reporting",
+    "Fitness & gyms",
     "Healthcare & wellness",
     "Digital art & entertainment",
     "Pet travel & veterinary",
@@ -105,7 +106,15 @@ export const profile = {
       company: "Simform",
       period: "Sep 2025 – now",
       summary:
-        "Building cross-platform mobile apps and the web and backend pieces around them with React Native, Expo, Next.js and Node.js.",
+        "Building Expo apps and a Next.js web app for fitness and health clients, and mentoring junior developers.",
+      highlights: [
+        "Built a gym member app in Expo: class calendar and slot booking, body-composition and vitals logging with history graphs, goals, staff-assigned workouts, an exercise video library and challenges.",
+        "Built a connected-health platform across an Expo app and a Next.js web app: biological age, biomarkers, wearable vitals, an AI health coach with real-time voice, daily habits, and food logging with calorie tracking.",
+        "Integrated wearable data with Terra API and Junction, real-time voice with LiveKit, and barcode scanning for food logging.",
+        "Added membership subscriptions with RevenueCat in-app purchases.",
+        "Worked in TypeScript with Redux Thunk, in a monorepo with Jest unit tests; shipped builds and over-the-air updates with EAS Build and EAS Update.",
+        "Mentored a junior developer on each project through pairing and code review.",
+      ],
     },
     {
       role: "Associate Software Engineer",
@@ -165,6 +174,7 @@ export const profile = {
         "Expo config plugins",
         "Push notifications",
         "In-app purchases",
+        "RevenueCat",
         "App Store & Google Play releases",
         "Google Maps",
         "Barcode scanning",
@@ -195,6 +205,7 @@ export const profile = {
         "Preact",
         "Astro",
         "Redux Toolkit",
+        "Redux Thunk",
         "Zustand",
         "React Query",
         "Tailwind CSS",
@@ -281,6 +292,61 @@ export const profile = {
   // These are client products under NDA: names are codenames, there are no
   // links, and descriptions stay general. Never put a real product name here.
   projects: [
+    {
+      slug: "fitcircle",
+      name: "FitCircle",
+      category: "Fitness · Mobile",
+      discipline: "mobile",
+      client: true,
+      preview: "mobile",
+      tagline: "A gym member app for booking classes, tracking progress and following workouts.",
+      summary:
+        "A member app for a gym. Members book open slots from the class calendar, log body measurements and vitals and follow them over time in history graphs, set goals, follow workouts their trainers create, learn exercises from a video library, and join gym challenges.",
+      role: "Mobile Developer",
+      platforms: ["iOS", "Android"],
+      stack: ["React Native", "Expo", "EAS", "TypeScript", "Redux Thunk"],
+      highlights: [
+        "Built the class calendar with slot availability and booking.",
+        "Built logging for weight, body fat, muscle, lean and fat mass, blood pressure, vertical jump, spinal angles and body circumferences, with history graphs for each.",
+        "Added goal setting and progress tracking.",
+        "Showed staff-created personal workouts and an exercise library with step-by-step form, posture tips and videos.",
+        "Built gym challenges members can join.",
+        "Shipped with EAS and mentored a junior developer on the team.",
+      ],
+    },
+    {
+      slug: "vitalis",
+      name: "Vitalis",
+      category: "Connected health · Mobile & web",
+      discipline: "mobile",
+      client: true,
+      preview: "mobile",
+      tagline: "A connected-health app that brings wearables, nutrition and an AI coach together.",
+      summary:
+        "A personal health platform that pulls wearable data, biomarkers and daily habits into one view, with a biological-age score and an AI coach that explains what the numbers mean. I worked on both the Expo mobile app and the Next.js web app.",
+      role: "Mobile & Web Developer",
+      platforms: ["iOS", "Android", "Web"],
+      stack: [
+        "React Native",
+        "Expo",
+        "EAS",
+        "Next.js",
+        "TypeScript",
+        "Redux Thunk",
+        "RevenueCat",
+        "Terra API",
+        "LiveKit",
+      ],
+      highlights: [
+        "Built the features across the Expo app and the Next.js web app, in a shared monorepo.",
+        "Built the biological-age view, biomarkers and daily focus habits.",
+        "Pulled wearable vitals (HRV, resting heart rate, steps, active energy) through Terra API and Junction.",
+        "Built the AI health coach, including real-time voice conversations with LiveKit.",
+        "Added food logging with a nutrition database, barcode scanning and calorie tracking.",
+        "Built membership subscriptions with RevenueCat in-app purchases.",
+        "Wrote Jest unit tests, shipped with EAS Build and EAS Update, and mentored a junior developer on the team.",
+      ],
+    },
     {
       slug: "wellnest",
       name: "WellNest",

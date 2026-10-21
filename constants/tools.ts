@@ -40,6 +40,7 @@ import {
   siRazorpay,
   siReact,
   siReactquery,
+  siRevenuecat,
   siRedux,
   siStripe,
   siTailwindcss,
@@ -67,6 +68,7 @@ export const toolIcons: Record<string, SimpleIcon> = {
   "Google Maps": siGooglemaps,
   LiveKit: siLivekit,
   "LiveKit (real-time voice)": siLivekit,
+  RevenueCat: siRevenuecat,
 
   // Smart TV
   "LG webOS": siLg,
@@ -79,6 +81,7 @@ export const toolIcons: Record<string, SimpleIcon> = {
   TypeScript: siTypescript,
   "JavaScript (ES6+)": siJavascript,
   "Redux Toolkit": siRedux,
+  "Redux Thunk": siRedux,
   "React Query": siReactquery,
   "Tailwind CSS": siTailwindcss,
   Tailwind: siTailwindcss,
